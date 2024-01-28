@@ -10,6 +10,7 @@ import { Work } from "./components/homepage/Work";
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "next/navigation";
 import { ReCaptchaProvider } from "next-recaptcha-v3";
+import { debounce } from "lodash-es";
 
 export default function Home() {
   const containerRef = useRef<HTMLElement | null>(null);
@@ -92,16 +93,3 @@ export default function Home() {
     </Box>
   );
 }
-
-const debounce = (callback: () => void, wait: number) => {
-  let timeoutId: number | null = null;
-  return (...args) => {
-    if (timeoutId) {
-      window.clearTimeout(timeoutId);
-    }
-
-    timeoutId = window.setTimeout(() => {
-      callback.apply(null, args);
-    }, wait);
-  };
-};

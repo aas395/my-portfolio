@@ -1,6 +1,11 @@
 import { Container, ContainerProps } from "@chakra-ui/react";
+import { PropsWithChildren } from "react";
 
-export const PageContainer = ({ children, ...props }: ContainerProps) => {
+export const PageContainer = ({
+  children,
+  ...props
+}: PropsWithChildren<ContainerProps>) => {
+  /* this type definition is due to a ts-related bug. Solution here: https://github.com/styled-components/styled-components/issues/4166 */
   return (
     <Container
       height="100vh"
