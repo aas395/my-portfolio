@@ -9,10 +9,11 @@ export const About = () => {
           About
         </Heading>
         <Text textAlign="center">
-          With over 15 years of software development experience and a client
-          list ranging from solo-founder startups to multinational corporations,
-          Aaron brings a passion for technology, a business-first approach to
-          software development, and a commitment to success to every project.
+          With over 15 years of full-stack software development experience and a
+          client list ranging from solo-founder startups to multinational
+          corporations, I bring a passion for technology, a business-first
+          approach to software development, and a commitment to success to every
+          project.
         </Text>
       </Flex>
     </PageContainer>

@@ -1,4 +1,4 @@
-import { Flex, Heading, Text } from "@chakra-ui/react";
+import { Button, Flex, Heading, Text } from "@chakra-ui/react";
 import { PageContainer } from "../PageContainer";
 
 export const Services = () => {
@@ -9,11 +9,17 @@ export const Services = () => {
           Services
         </Heading>
         <Text textAlign="center">
-          With over 15 years of software development experience and a client
-          list ranging from solo-founder startups to multinational corporations,
-          Aaron brings a passion for technology, a business-first approach to
-          software development, and a commitment to success to every project.
+          Full-stack, React-focused web development. Mobile development with
+          React Native.
+          <br />
+          <br />
+          Got a project that uses a different stack? I love learning new
+          technologies and pick new tools up quickly. Send me a message and
+          let&apos;s talk!
         </Text>
+        <Button as="a" href="#contact" mt={6}>
+          Reach Out
+        </Button>
       </Flex>
     </PageContainer>
   );

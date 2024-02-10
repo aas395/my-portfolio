@@ -14,6 +14,7 @@ export const PageContainer = ({
       display="flex"
       position="relative"
       scrollSnapAlign="start"
+      maxWidth={{ base: "600px", xl: "960px" }}
       {...props}
     >
       {children}
