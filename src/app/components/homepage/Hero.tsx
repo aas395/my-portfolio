@@ -1,28 +1,14 @@
 import { Link } from "@chakra-ui/next-js";
-import { Flex, Heading, Text } from "@chakra-ui/react";
+import { Flex, Heading, Icon, IconButton, Text } from "@chakra-ui/react";
 import { PageContainer } from "../PageContainer";
-
+import { ChevronDownIcon } from "@chakra-ui/icons";
+import { motion } from "framer-motion";
 export const Hero = () => {
   return (
     <PageContainer alignItems="center" justifyContent="center" id="hero">
       <Heading as="h1" zIndex="100" textAlign="center">
         Full-Stack Web and Mobile Developer
       </Heading>
-      {/* <Box
-    position="absolute"
-    as="video"
-    w="100vw"
-    h="100vh"
-    top="0"
-    left="0"
-    autoPlay
-    muted
-    loop
-    objectFit="cover"
-  >
-    <source src="/Trimmed Plant.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-  </Box> */}
       <Flex
         w="100%"
         position="absolute"
@@ -31,9 +17,21 @@ export const Hero = () => {
         right="0"
         justifyContent="center"
       >
-        <Link href="#about">
+        <Flex as={Link} href="#about" flexDir="column" alignItems="center">
           <Text>Learn More</Text>
-        </Link>
+          <motion.div
+            animate={{
+              transform: [
+                "translateY(0px)",
+                "translateY(5px)",
+                "translateY(0px)",
+              ],
+            }}
+            transition={{ repeat: Infinity, repeatDelay: 1 }}
+          >
+            <Icon as={ChevronDownIcon} boxSize={6} />
+          </motion.div>
+        </Flex>
       </Flex>
     </PageContainer>
   );

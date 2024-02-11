@@ -40,13 +40,13 @@ export const Contact = () => {
 
   return (
     <PageContainer id="contact">
-      <Flex flexDir="column" alignItems="center" alignSelf="center">
+      <Flex flexDir="column" alignItems="center" alignSelf="center" w="100%">
         <Heading as="h2" mb={4} color="#333">
           Contact
         </Heading>
         <FormProvider {...formSettings}>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <Flex flexDir="column" width="50vw" gap={4}>
+          <form onSubmit={handleSubmit(onSubmit)} className="w-full">
+            <Flex flexDir="column" width="100%" gap={4}>
               <FormControl isInvalid={!!errors.name}>
                 <Input {...register("name")} w="100%" placeholder="Name*" />
               </FormControl>

@@ -2,7 +2,7 @@
 
 import { Box } from "@chakra-ui/react";
 import { Hero } from "./components/homepage/Hero";
-import { Header } from "./components/Header";
+import { Header } from "./components/header/Header";
 import { About } from "./components/homepage/About";
 import { Services } from "./components/homepage/Services";
 import { Contact } from "./components/homepage/Contact";
