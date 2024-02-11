@@ -23,11 +23,9 @@ export default function Home() {
 
   useEffect(() => {
     if (window.location.hash) {
-      console.log(window.location.hash, "hash");
       const anchorEl = document.querySelector(window.location.hash);
 
       if (anchorEl) {
-        console.log();
         document
           .querySelector("main")
           ?.scrollTo(0, (anchorEl as HTMLDivElement).offsetTop);
@@ -38,6 +36,14 @@ export default function Home() {
   useEffect(() => {
     if (window.location.hash && !activePageId) {
       setActivePageId(window.location.hash.slice(1));
+    }
+
+    if (window.location.hash.replace("#", "") !== activePageId) {
+      window.history.replaceState(
+        null,
+        "",
+        activePageId ? `#${activePageId}` : ""
+      );
     }
   }, [params, activePageId]);
 
