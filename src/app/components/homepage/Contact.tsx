@@ -2,7 +2,6 @@ import {
   Button,
   Flex,
   FormControl,
-  Heading,
   Input,
   Text,
   Textarea,
@@ -35,7 +34,7 @@ export const Contact = () => {
     register,
     formState: { errors },
   } = formSettings;
-  const { executeRecaptcha, ...recaptchaProps } = useReCaptcha();
+  const { executeRecaptcha } = useReCaptcha();
 
   const onSubmit: SubmitHandler<ContactFormSchemaProps> = async (data) => {
     const token = await executeRecaptcha("form_submit");
@@ -75,6 +74,7 @@ export const Contact = () => {
                       {...register("body")}
                       w="100%"
                       placeholder="Body*"
+                      resize="none"
                     />
                   </FormControl>
                   <Text fontSize="12px">

@@ -1,5 +1,5 @@
 import { Link } from "@chakra-ui/next-js";
-import { Flex, Heading, Icon, Text } from "@chakra-ui/react";
+import { Flex, Icon, Text } from "@chakra-ui/react";
 import { PageContainer } from "../PageContainer";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { motion, useInView } from "framer-motion";

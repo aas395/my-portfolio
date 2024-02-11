@@ -1,9 +1,12 @@
 import { contentVariants } from "@/theme";
-import { Flex } from "@chakra-ui/react";
+import { Flex, FlexProps } from "@chakra-ui/react";
 import { motion, useInView } from "framer-motion";
 import { PropsWithChildren, useRef } from "react";
 
-export const AnimatedContent = ({ children, ...props }: PropsWithChildren) => {
+export const AnimatedContent = ({
+  children,
+  ...props
+}: PropsWithChildren<FlexProps>) => {
   const contentRef = useRef(null);
   const isInView = useInView(contentRef, { once: true });
 
@@ -16,6 +19,7 @@ export const AnimatedContent = ({ children, ...props }: PropsWithChildren) => {
       initial="initial"
       position="relative"
       flexDir="column"
+      {...props}
     >
       {children}
     </Flex>
