@@ -22,6 +22,20 @@ export default function Home() {
   const params = useParams();
 
   useEffect(() => {
+    if (window.location.hash) {
+      console.log(window.location.hash, "hash");
+      const anchorEl = document.querySelector(window.location.hash);
+
+      if (anchorEl) {
+        console.log();
+        document
+          .querySelector("main")
+          ?.scrollTo(0, (anchorEl as HTMLDivElement).offsetTop);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
     if (window.location.hash && !activePageId) {
       setActivePageId(window.location.hash.slice(1));
     }
@@ -59,6 +73,9 @@ export default function Home() {
             }
           });
         }, 50)}
+        overflowY="scroll"
+        height="100vh"
+        id="main"
       >
         <Hero />
         <About />
