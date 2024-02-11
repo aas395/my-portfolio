@@ -9,7 +9,7 @@ import { Contact } from "./components/homepage/Contact";
 import { Work } from "./components/homepage/Work";
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "next/navigation";
-import { ReCaptchaProvider } from "next-recaptcha-v3";
+
 import { debounce } from "lodash-es";
 
 export default function Home() {
@@ -62,15 +62,11 @@ export default function Home() {
           });
         }, 50)}
       >
-        <ReCaptchaProvider
-          reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
-        >
-          <Hero />
-          <About />
-          <Services />
-          <Work />
-          <Contact />
-        </ReCaptchaProvider>
+        <Hero />
+        <About />
+        <Services />
+        <Work />
+        <Contact />
       </Box>
       {/* <Heading as="h3">SPECIALTIES</Heading>
       <ul>

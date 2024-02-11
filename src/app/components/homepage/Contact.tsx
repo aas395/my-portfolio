@@ -4,14 +4,16 @@ import {
   FormControl,
   Heading,
   Input,
+  Text,
   Textarea,
+  Link,
 } from "@chakra-ui/react";
 import { PageContainer } from "../PageContainer";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import axios from "axios";
-import { useReCaptcha } from "next-recaptcha-v3";
+import { ReCaptchaProvider, useReCaptcha } from "next-recaptcha-v3";
 
 const schema = yup.object({
   name: yup.string().required("Required"),
@@ -31,7 +33,7 @@ export const Contact = () => {
     register,
     formState: { errors },
   } = formSettings;
-  const { executeRecaptcha } = useReCaptcha();
+  const { executeRecaptcha, ...recaptchaProps } = useReCaptcha();
 
   const onSubmit: SubmitHandler<ContactFormSchemaProps> = async (data) => {
     const token = await executeRecaptcha("form_submit");
@@ -44,29 +46,54 @@ export const Contact = () => {
         <Heading as="h2" mb={4} color="#333">
           Contact
         </Heading>
-        <FormProvider {...formSettings}>
-          <form onSubmit={handleSubmit(onSubmit)} className="w-full">
-            <Flex flexDir="column" width="100%" gap={4}>
-              <FormControl isInvalid={!!errors.name}>
-                <Input {...register("name")} w="100%" placeholder="Name*" />
-              </FormControl>
-              <FormControl isInvalid={!!errors.email}>
-                <Input {...register("email")} w="100%" placeholder="Email*" />
-              </FormControl>
-              <FormControl isInvalid={!!errors.subject}>
-                <Input
-                  {...register("subject")}
-                  w="100%"
-                  placeholder="Subject*"
-                />
-              </FormControl>
-              <FormControl isInvalid={!!errors.body}>
-                <Textarea {...register("body")} w="100%" placeholder="Body*" />
-              </FormControl>
-              <Button type="submit">Send</Button>
-            </Flex>
-          </form>
-        </FormProvider>
+        <ReCaptchaProvider
+          reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+        >
+          <FormProvider {...formSettings}>
+            <form onSubmit={handleSubmit(onSubmit)} className="w-full">
+              <Flex flexDir="column" width="100%" gap={4}>
+                <FormControl isInvalid={!!errors.name}>
+                  <Input {...register("name")} w="100%" placeholder="Name*" />
+                </FormControl>
+                <FormControl isInvalid={!!errors.email}>
+                  <Input {...register("email")} w="100%" placeholder="Email*" />
+                </FormControl>
+                <FormControl isInvalid={!!errors.subject}>
+                  <Input
+                    {...register("subject")}
+                    w="100%"
+                    placeholder="Subject*"
+                  />
+                </FormControl>
+                <FormControl isInvalid={!!errors.body}>
+                  <Textarea
+                    {...register("body")}
+                    w="100%"
+                    placeholder="Body*"
+                  />
+                </FormControl>
+                <Text fontSize="12px">
+                  This site is protected by reCAPTCHA and the Google{" "}
+                  <Link
+                    href="https://policies.google.com/privacy"
+                    textDecoration="underline"
+                  >
+                    Privacy Policy
+                  </Link>{" "}
+                  and{" "}
+                  <Link
+                    href="https://policies.google.com/terms"
+                    textDecoration="underline"
+                  >
+                    Terms of Service
+                  </Link>{" "}
+                  apply.
+                </Text>
+                <Button type="submit">Send</Button>
+              </Flex>
+            </form>
+          </FormProvider>
+        </ReCaptchaProvider>
       </Flex>
     </PageContainer>
   );
