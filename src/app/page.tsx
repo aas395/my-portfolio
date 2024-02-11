@@ -48,8 +48,6 @@ export default function Home() {
       <Box
         as="main"
         scrollSnapType="y mandatory"
-        overflowY="scroll"
-        height="100vh"
         scrollSnapStop="normal"
         scrollBehavior="smooth"
         ref={containerRef}

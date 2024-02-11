@@ -56,7 +56,7 @@ export const MobileNav = ({
           className="md:hidden"
           id="menu-button"
           bgColor={isOpen ? "gray.100" : "white !important"}
-          onClick={(e) => {
+          onClick={() => {
             onToggle();
           }}
         />

@@ -1,11 +1,5 @@
 import { Link } from "@chakra-ui/next-js";
-import {
-  Flex,
-  Heading,
-  Container,
-  Box,
-  Link as ChakraLink,
-} from "@chakra-ui/react";
+import { Flex, Heading, Container, Box } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { MobileNav } from "./MobileNav";
 
