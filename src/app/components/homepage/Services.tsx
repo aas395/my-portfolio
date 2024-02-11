@@ -22,7 +22,7 @@ export const Services = () => {
             as="a"
             href="#contact"
             mt={6}
-            w={{ base: "100%", md: "200px" }}
+            w={{ base: "100%", sm: "150px", md: "200px" }}
             alignSelf="center"
           >
             Reach Out

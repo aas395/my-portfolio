@@ -34,18 +34,30 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    if (window.location.hash) {
+      const anchorEl = document?.querySelector(window.location.hash);
+
+      document
+        ?.querySelector("main")
+        ?.scrollTo(0, (anchorEl as HTMLDivElement).offsetTop);
+    }
+  }, [params]);
+
+  useEffect(() => {
     if (window.location.hash && !activePageId) {
       setActivePageId(window.location.hash.slice(1));
     }
+  }, [params, activePageId]);
 
+  useEffect(() => {
     if (window.location.hash.replace("#", "") !== activePageId) {
-      window.history.replaceState(
-        null,
+      window.history.pushState(
+        window.history.state,
         "",
-        activePageId ? `#${activePageId}` : ""
+        `${window.location.pathname}${activePageId ? `#${activePageId}` : ""}`
       );
     }
-  }, [params, activePageId]);
+  }, [activePageId]);
 
   useEffect(() => {
     if (containerRef.current?.children) {
