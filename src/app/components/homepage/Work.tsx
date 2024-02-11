@@ -2,6 +2,7 @@ import { Flex, Link, Text } from "@chakra-ui/react";
 import { PageContainer } from "../PageContainer";
 import { AnimatedHeading } from "../AnimatedHeading";
 import { AnimatedContent } from "../AnimatedContent";
+import { NextPageLink } from "../NextPageLink";
 
 export const Work = () => {
   return (
@@ -67,6 +68,7 @@ export const Work = () => {
             />
           </Flex>
         </AnimatedContent>
+        <NextPageLink url="#contact" />
       </Flex>
     </PageContainer>
   );
