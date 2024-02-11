@@ -22,7 +22,13 @@ export const Work = () => {
           own designer or I can bring in a designer from my network to give your
           product a modern, high-quality look and feel.
         </Text>
-        <Flex gap={8} maxW="100%" overflowX="auto" justifyContent="flex-start">
+        <Flex
+          gap={12}
+          maxW="100%"
+          overflowX="auto"
+          justifyContent="flex-start"
+          flexWrap="wrap"
+        >
           <WorkHistoryItem
             title="Hey Hei (AB InBev)"
             description="Built the website for a new drink brand using Shopify's Hydrogen tool. Design provided by the brand."
@@ -37,11 +43,9 @@ export const Work = () => {
           />
           <WorkHistoryItem
             title="The Change Reaction -- iOS App"
-            description="Built a donor-facing iOS app using React Native and the DRF back end created for the portal. Launched on the App Store. Recently redesigned and but not yet updated on the App Store."
-            linkUrl="https://changereaction.org"
-            linkText="app store"
+            description="Built a donor-facing iOS app using React Native and the DRF back end created for the portal. Launched on the App Store. Recently redesigned but notpzee  yet updated on the App Store."
           />
-          {/* <WorkHistoryItem
+          <WorkHistoryItem
             title="Illust.Space"
             description="Worked on a team to build user interfaces using NextJS and React Three Fiber for a Web3 product. Also created internal tools to improve developer experience and efficiency."
             linkUrl="https://illust.ar"
@@ -52,7 +56,14 @@ export const Work = () => {
             description="Built a small NextJS site using ChakraUI/Panda for a hybrid business/charity project."
             linkUrl="https://artmitzvah.art"
             linkText="artmitzvah.art"
-          /> */}
+          />
+
+          <WorkHistoryItem
+            title="Hopzee"
+            description="Built an iOS app using React Native and a Django/DRF back end. Design provided by the client."
+            linkUrl="https://apps.apple.com/us/app/hopzee-family-activities/id1557560419"
+            linkText="App Store"
+          />
         </Flex>
       </Flex>
     </PageContainer>
@@ -67,18 +78,27 @@ const WorkHistoryItem = ({
 }: {
   title: string;
   description: string;
-  linkUrl: string;
-  linkText: string;
+  linkUrl?: string;
+  linkText?: string;
 }) => {
   return (
-    <Flex flexDir="column" gap={2} maxW="70vw" flexShrink={0} textAlign="left">
+    <Flex
+      flexDir="column"
+      gap={2}
+      maxW="70vw"
+      flexShrink={0}
+      textAlign="left"
+      w={{ base: "auto", md: "calc(33.33% - 32px)" }}
+    >
       <Text as="h3" fontWeight="bold">
         {title}
       </Text>
       <Text>{description}</Text>
-      <Link href={linkUrl} fontWeight="bold" target="_blank">
-        {linkText}
-      </Link>
+      {linkUrl && (
+        <Link href={linkUrl} fontWeight="bold" target="_blank">
+          {linkText}
+        </Link>
+      )}
     </Flex>
   );
 };
