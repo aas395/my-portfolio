@@ -1,24 +1,48 @@
 import { Link } from "@chakra-ui/next-js";
-import { Flex, Heading, Icon, IconButton, Text } from "@chakra-ui/react";
+import { Flex, Heading, Icon, Text } from "@chakra-ui/react";
 import { PageContainer } from "../PageContainer";
 import { ChevronDownIcon } from "@chakra-ui/icons";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { AnimatedHeading } from "../AnimatedHeading";
+
 export const Hero = () => {
+  const contentRef = useRef(null);
+  const isInView = useInView(contentRef, { once: true });
+  const contentVariants = {
+    initial: {
+      opacity: 0,
+      bottom: "20px",
+    },
+    visible: {
+      opacity: 1,
+      bottom: "40px",
+      transition: {
+        delay: 1,
+      },
+    },
+  };
+
   return (
     <PageContainer alignItems="center" justifyContent="center" id="hero">
-      <Heading as="h1" zIndex="100" textAlign="center">
+      <AnimatedHeading as={motion.h1} zIndex="100" textAlign="center">
         Full-Stack Web and Mobile Developer
-      </Heading>
+      </AnimatedHeading>
       <Flex
         w="100%"
         position="absolute"
-        bottom="40px"
+        bottom={{ base: "20px", md: "40px" }}
         left="0"
         right="0"
         justifyContent="center"
+        as={motion.div}
+        animate={isInView ? "visible" : "initial"}
+        variants={contentVariants}
+        initial="initial"
+        ref={contentRef}
       >
         <Flex as={Link} href="#about" flexDir="column" alignItems="center">
-          <Text>Learn More</Text>
+          <Text lineHeight={1}>Learn More</Text>
           <motion.div
             animate={{
               transform: [

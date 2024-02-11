@@ -12,3 +12,31 @@ export const theme = extendTheme({
     },
   },
 });
+
+export const headerVariants = {
+  initial: {
+    opacity: 0,
+    top: "-20px",
+  },
+  visible: {
+    opacity: 1,
+    top: "0",
+    transition: {
+      delay: 0.75,
+    },
+  },
+};
+
+export const contentVariants = {
+  initial: {
+    opacity: 0,
+    top: "20px",
+  },
+  visible: {
+    opacity: 1,
+    top: "0",
+    transition: {
+      delay: 1.25,
+    },
+  },
+};
