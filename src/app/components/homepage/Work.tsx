@@ -27,11 +27,11 @@ export const Work = () => {
           </Text>
           <Flex
             gap={{ base: 10, md: 12 }}
-            w="100%"
+            maxW="100%"
             overflowX="auto"
             justifyContent="flex-start"
             flexWrap={{ base: "initial", md: "wrap" }}
-            flexDir={{ base: "row", md: "column" }}
+            flexDir="row"
           >
             <WorkHistoryItem
               title="Hey Hei (AB InBev)"
