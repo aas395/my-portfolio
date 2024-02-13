@@ -14,9 +14,10 @@ export const Work = () => {
         // justifyContent={{ base: "flex-start", md: "center" }}
         textAlign="center"
         w="100%"
+        overflow="hidden"
       >
         <AnimatedHeading>Work</AnimatedHeading>
-        <AnimatedContent>
+        <AnimatedContent w="100%">
           <Text mb={8}>
             The projects below represent my most recent work. Writing code and
             thinking through product features are my strongest skills -- I have
@@ -25,11 +26,12 @@ export const Work = () => {
             give your product a modern, high-quality look and feel.
           </Text>
           <Flex
-            gap={12}
-            maxW="100%"
+            gap={{ base: 10, md: 12 }}
+            w="100%"
             overflowX="auto"
             justifyContent="flex-start"
-            flexWrap="wrap"
+            flexWrap={{ base: "initial", md: "wrap" }}
+            flexDir={{ base: "row", md: "column" }}
           >
             <WorkHistoryItem
               title="Hey Hei (AB InBev)"
@@ -89,7 +91,7 @@ const WorkHistoryItem = ({
     <Flex
       flexDir="column"
       gap={2}
-      maxW="70vw"
+      maxW="75vw"
       flexShrink={0}
       textAlign="left"
       w={{ base: "auto", md: "calc(33.33% - 32px)" }}
