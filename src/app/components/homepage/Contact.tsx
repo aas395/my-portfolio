@@ -16,6 +16,7 @@ import axios from "axios";
 import { useReCaptcha } from "next-recaptcha-v3";
 import { AnimatedHeading } from "../AnimatedHeading";
 import { AnimatedContent } from "../AnimatedContent";
+import { useEffect } from "react";
 
 const schema = yup.object({
   name: yup.string().required("Required"),
@@ -33,10 +34,15 @@ export const Contact = () => {
   const {
     handleSubmit,
     register,
-    formState: { errors },
+    reset,
+    formState: { errors, isSubmitting, isSubmitSuccessful },
   } = formSettings;
   const { executeRecaptcha } = useReCaptcha();
   const toast = useToast();
+
+  useEffect(() => {
+    reset();
+  }, [isSubmitSuccessful, reset]);
 
   const onSubmit: SubmitHandler<ContactFormSchemaProps> = async (data) => {
     const token = await executeRecaptcha("form_submit");
@@ -109,7 +115,9 @@ export const Contact = () => {
                   </Link>{" "}
                   apply.
                 </Text>
-                <Button type="submit">Send</Button>
+                <Button type="submit" isDisabled={isSubmitting}>
+                  {isSubmitting ? "Sending..." : "Send"}
+                </Button>
               </Flex>
             </form>
           </FormProvider>
