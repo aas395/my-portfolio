@@ -51,7 +51,7 @@ export const Header = ({
       alignItems="center"
       h={{ base: "auto", md: "132px" }}
     >
-      <Link href="#hero" color="#fff">
+      <Link href="#hero" color="#fff" mt={{ base: "24px", md: "16px" }}>
         <Image
           src="/logo.svg"
           width={478.04575}
@@ -59,7 +59,6 @@ export const Header = ({
           alt="Aaron Smyth"
           w={{ base: "90%", md: "400px" }}
           h={"auto"}
-          mt={"16px"}
         />
       </Link>
 
