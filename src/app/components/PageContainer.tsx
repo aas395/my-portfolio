@@ -25,6 +25,7 @@ export const PageContainer = ({
         display="flex"
         position="relative"
         maxWidth={{ base: "100vw", md: "600px", xl: "960px" }}
+        zIndex={1}
       >
         {children}
       </Container>
