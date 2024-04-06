@@ -136,7 +136,12 @@ const ServiceItem = ({
   onLearnMoreButtonClick: (_service: Service) => void;
 }) => {
   return (
-    <Flex flexDir="column" color="#fff" zIndex="1">
+    <Flex
+      flexDir="column"
+      color="#fff"
+      zIndex="1"
+      justifyContent={{ base: "space-between", md: "initial" }}
+    >
       <Text as="h3" fontWeight="bold" mb={4}>
         {service.title}
       </Text>
