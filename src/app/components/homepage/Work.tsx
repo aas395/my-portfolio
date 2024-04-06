@@ -6,7 +6,10 @@ import { NextPageLink } from "../NextPageLink";
 
 export const Work = () => {
   return (
-    <PageContainer id="work">
+    <PageContainer
+      id="work"
+      backgroundImgSrc="./bence-balla-schottner-VPETME4zVWM-unsplash.webp"
+    >
       <Flex
         flexDir="column"
         alignItems="center"

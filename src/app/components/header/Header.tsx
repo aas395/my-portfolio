@@ -52,7 +52,9 @@ export const Header = ({
       h="100px"
     >
       <Heading as="h2">
-        <Link href="#hero">Aaron Smyth</Link>
+        <Link href="#hero" color="#fff">
+          Aaron Smyth
+        </Link>
       </Heading>
 
       <Flex
@@ -98,6 +100,7 @@ export const Header = ({
                   height="100%"
                   width="100%"
                   whileHover="active"
+                  color="#fff"
                 >
                   {item.text}
                   <Flex
@@ -113,7 +116,7 @@ export const Header = ({
                     <Box
                       as={motion.div}
                       display="block"
-                      backgroundColor="black"
+                      backgroundColor="#fff"
                       variants={linkStateVariants}
                       animate={isActive ? "active" : undefined}
                     />

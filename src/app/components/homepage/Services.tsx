@@ -53,7 +53,10 @@ export const Services = () => {
     useState<string>();
 
   return (
-    <PageContainer id="services">
+    <PageContainer
+      id="services"
+      backgroundImgSrc="/ferenc-horvath-cg78NV0c_Ow-unsplash.webp"
+    >
       <Flex flexDir="column" alignItems="center" alignSelf="center">
         <AnimatedHeading>Services</AnimatedHeading>
         <AnimatedContent>
@@ -133,7 +136,7 @@ const ServiceItem = ({
   onLearnMoreButtonClick: (_service: Service) => void;
 }) => {
   return (
-    <Flex flexDir="column">
+    <Flex flexDir="column" color="#fff" zIndex="1">
       <Text as="h3" fontWeight="bold" mb={4}>
         {service.title}
       </Text>

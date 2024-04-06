@@ -19,6 +19,7 @@ export const AnimatedContent = ({
       initial="initial"
       position="relative"
       flexDir="column"
+      color="#fff"
       {...props}
     >
       {children}

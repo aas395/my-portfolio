@@ -19,6 +19,7 @@ export const AnimatedHeading = ({
       animate={isInView ? "visible" : "initial"}
       ref={headerRef}
       position="relative"
+      color="#fff"
       {...props}
     >
       {children}

@@ -34,6 +34,7 @@ export const NextPageLink = ({ url }: { url: string }) => {
       variants={contentVariants}
       initial="initial"
       ref={contentRef}
+      zIndex={100}
     >
       <Flex as={Link} href={url} flexDir="column" alignItems="center">
         <motion.div
@@ -46,7 +47,7 @@ export const NextPageLink = ({ url }: { url: string }) => {
           }}
           transition={{ repeat: Infinity, repeatDelay: 1 }}
         >
-          <Icon as={ChevronDownIcon} boxSize={6} />
+          <Icon as={ChevronDownIcon} boxSize={6} color="#fff" />
         </motion.div>
       </Flex>
     </Flex>

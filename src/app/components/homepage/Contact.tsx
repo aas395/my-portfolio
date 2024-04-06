@@ -70,7 +70,10 @@ export const Contact = () => {
   };
 
   return (
-    <PageContainer id="contact">
+    <PageContainer
+      id="contact"
+      backgroundImgSrc="/geio-tischler-tQT5KiZSKpE-unsplash.webp"
+    >
       <Flex flexDir="column" alignItems="center" alignSelf="center" w="100%">
         <AnimatedHeading>Contact</AnimatedHeading>
         <AnimatedContent>

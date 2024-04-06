@@ -6,7 +6,10 @@ import { NextPageLink } from "../NextPageLink";
 
 export const About = () => {
   return (
-    <PageContainer id="about">
+    <PageContainer
+      id="about"
+      backgroundImgSrc="josseph-downs-WOkl7pWtcE0-unsplash.webp"
+    >
       <Flex flexDir="column" alignItems="center" alignSelf="center">
         <AnimatedHeading>About</AnimatedHeading>
         <AnimatedContent>
