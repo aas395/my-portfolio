@@ -11,6 +11,26 @@ export const theme = extendTheme({
       },
     },
   },
+  components: {
+    Input: {
+      baseStyle: {
+        field: {
+          color: "#fff",
+          _placeholder: {
+            color: "#fff",
+          },
+        },
+      },
+    },
+    Textarea: {
+      baseStyle: {
+        color: "#fff",
+        _placeholder: {
+          color: "#fff",
+        },
+      },
+    },
+  },
 });
 
 export const headerVariants = {

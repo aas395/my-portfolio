@@ -36,7 +36,7 @@ export const PageContainer = ({
           left="0"
           right="0"
           bottom="0"
-          opacity={0.2}
+          opacity={0.4}
           bgColor="#000"
         />
         <AnimatedBackgroundImage src={backgroundImgSrc} />
@@ -58,7 +58,7 @@ export const AnimatedBackgroundImage = ({ src }: { src: string }) => {
       opacity: 1,
       top: "0px",
       transition: {
-        delay: 1.25,
+        delay: 0.5,
       },
     },
   };

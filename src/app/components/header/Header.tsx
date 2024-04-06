@@ -1,5 +1,5 @@
-import { Link } from "@chakra-ui/next-js";
-import { Flex, Heading, Container, Box } from "@chakra-ui/react";
+import { Link, Image } from "@chakra-ui/next-js";
+import { Flex, Container, Box } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { MobileNav } from "./MobileNav";
 
@@ -49,13 +49,19 @@ export const Header = ({
       maxWidth="auto"
       display="flex"
       alignItems="center"
-      h="100px"
+      h={{ base: "auto", md: "132px" }}
     >
-      <Heading as="h2">
-        <Link href="#hero" color="#fff">
-          Aaron Smyth
-        </Link>
-      </Heading>
+      <Link href="#hero" color="#fff">
+        <Image
+          src="/logo.svg"
+          width={478.04575}
+          height={104.446}
+          alt="Aaron Smyth"
+          w={{ base: "90%", md: "400px" }}
+          h={"auto"}
+          mt={"16px"}
+        />
+      </Link>
 
       <Flex
         gap={8}
@@ -101,6 +107,8 @@ export const Header = ({
                   width="100%"
                   whileHover="active"
                   color="#fff"
+                  fontWeight={"bold"}
+                  fontSize="20px"
                 >
                   {item.text}
                   <Flex
@@ -111,7 +119,7 @@ export const Header = ({
                     bottom={{ base: "0px", md: "-6px" }}
                     alignItems="center"
                     justifyContent="center"
-                    height="1px"
+                    height="2px"
                   >
                     <Box
                       as={motion.div}

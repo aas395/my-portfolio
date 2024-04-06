@@ -4,7 +4,7 @@ import { CacheProvider } from "@chakra-ui/next-js";
 import { ChakraProvider } from "@chakra-ui/react";
 import { theme } from "@/theme";
 import { ReCaptchaProvider } from "next-recaptcha-v3";
-
+console.log(theme);
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <ReCaptchaProvider
