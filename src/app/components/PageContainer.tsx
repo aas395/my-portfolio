@@ -10,7 +10,7 @@ export const PageContainer = ({
   /* this type definition is due to a ts-related bug. Solution here: https://github.com/styled-components/styled-components/issues/4166 */
   return (
     <Box
-      minHeight="100vh"
+      minHeight="100%"
       w="100vw"
       scrollSnapAlign="start"
       display="flex"
@@ -19,7 +19,7 @@ export const PageContainer = ({
     >
       <Container
         w="100vw"
-        h="100vh"
+        h="100%"
         justifyContent="center"
         alignItems="center"
         display="flex"

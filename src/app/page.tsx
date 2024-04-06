@@ -92,7 +92,7 @@ export default function Home() {
           });
         }, 50)}
         overflowY="scroll"
-        height="100vh"
+        height="100%"
         id="main"
       >
         <Hero />
