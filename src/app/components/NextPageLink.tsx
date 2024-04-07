@@ -7,7 +7,7 @@ import { useRef } from "react";
 export const NextPageLink = ({ url }: { url: string }) => {
   const contentRef = useRef(null);
   const isInView = useInView(contentRef, { once: true });
-  const bottomAmount = useBreakpointValue({ base: "40px", md: "20px" });
+  const bottomAmount = useBreakpointValue({ base: "20px", md: "40px" });
   const contentVariants = {
     initial: {
       opacity: 0,
