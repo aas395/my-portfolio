@@ -71,12 +71,12 @@ export const Header = ({
         position="relative"
         flexDir={{ base: "column", md: "row" }}
       >
-        <MobileNav
+        {/* <MobileNav
           links={links}
           activePageId={activePageId}
           linkStateVariants={linkStateVariants}
           setActivePageId={setActivePageId}
-        />
+        /> */}
         <Box
           gap={{ base: 0, md: 8 }}
           as={motion.div}

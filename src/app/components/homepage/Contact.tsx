@@ -85,7 +85,7 @@ export const Contact = () => {
                     {...register("name")}
                     w="100%"
                     placeholder="Name*"
-                    backdropFilter="contrast(80%)"
+                    backdropFilter="contrast(70%)"
                   />
                 </FormControl>
                 <FormControl isInvalid={!!errors.email}>
@@ -93,7 +93,7 @@ export const Contact = () => {
                     {...register("email")}
                     w="100%"
                     placeholder="Email*"
-                    backdropFilter="contrast(80%)"
+                    backdropFilter="contrast(70%)"
                   />
                 </FormControl>
                 <FormControl isInvalid={!!errors.subject}>
@@ -101,7 +101,8 @@ export const Contact = () => {
                     {...register("subject")}
                     w="100%"
                     placeholder="Subject*"
-                    backdropFilter="contrast(80%)"
+                    backdropFilter="contrast(70%)"
+                    autoComplete="off"
                   />
                 </FormControl>
                 <FormControl isInvalid={!!errors.body}>
@@ -110,7 +111,7 @@ export const Contact = () => {
                     w="100%"
                     placeholder="Body*"
                     resize="none"
-                    backdropFilter="contrast(80%)"
+                    backdropFilter="contrast(70%)"
                   />
                 </FormControl>
                 <Text fontSize="12px">
