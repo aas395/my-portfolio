@@ -27,6 +27,7 @@ export const MobileNav = ({
 }) => {
   const { isOpen, onClose, onToggle } = useDisclosure();
   const menuRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
   const variants = {
     visible: { opacity: 1, height: "auto" },
     hidden: { opacity: 0, height: 0 },
@@ -41,12 +42,13 @@ export const MobileNav = ({
         !(e.target as HTMLDivElement).id.includes("menu-button")
       ) {
         onClose();
+        buttonRef.current?.blur();
       }
     },
   });
 
   return (
-    <Box className="block md:hidden">
+    <Box className="flex md:hidden" flexDir="column" alignItems="center">
       <Menu>
         <MenuButton
           as={IconButton}
@@ -55,26 +57,36 @@ export const MobileNav = ({
           variant="outline"
           className="md:hidden"
           id="menu-button"
-          bgColor={isOpen ? "gray.100" : "white !important"}
+          bgColor={isOpen ? "gray.100" : "transparent"}
           onClick={() => {
             onToggle();
           }}
+          color={isOpen ? "#000" : "#fff"}
+          backdropFilter="blur(8px)"
+          flexGrow={0}
+          _focusVisible={{
+            bgColor: "#fff",
+            color: "#000",
+          }}
+          ref={buttonRef}
         />
         {showMenu && (
           <Flex
             gap={{ base: 0, md: 8 }}
             as={motion.div}
             flexDir={{ base: "column", md: "row" }}
-            top={{ base: "calc(100% + 10px)", md: "0" }}
-            right="0"
-            className="absolute md:relative"
+            top={{ base: "10px" }}
+            left="0"
+            className="relative"
             animate={showMenu ? "visible" : "hidden"}
             variants={variants}
             ref={menuRef}
             boxShadow={{ base: "md", md: "none" }}
             borderRadius={{ base: "md", md: "none" }}
             p={{ base: 4, md: 0 }}
-            bgColor={{ base: "white", md: "none" }}
+            bgColor={{ base: "rgba(255,255,255,.2)", md: "none" }}
+            backdropFilter={{ base: "blur(8px)", md: "none" }}
+            flexShrink={0}
           >
             {links.map((item) => {
               const isActive = `#${activePageId}` === item.href;
@@ -100,6 +112,7 @@ export const MobileNav = ({
                     height="100%"
                     width="100%"
                     whileHover="active"
+                    color="#fff"
                   >
                     {item.text}
                     <Flex
@@ -115,7 +128,7 @@ export const MobileNav = ({
                       <Box
                         as={motion.div}
                         display="block"
-                        backgroundColor="black"
+                        backgroundColor="#fff"
                         variants={linkStateVariants}
                         animate={isActive ? "active" : undefined}
                       />

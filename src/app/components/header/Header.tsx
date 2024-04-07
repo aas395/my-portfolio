@@ -50,6 +50,7 @@ export const Header = ({
       display="flex"
       alignItems="center"
       h={{ base: "auto", md: "132px" }}
+      flexDirection={{ base: "column", md: "row" }}
     >
       <Link href="#hero" color="#fff" mt={{ base: "24px", md: "16px" }}>
         <Image
@@ -57,7 +58,7 @@ export const Header = ({
           width={478.04575}
           height={104.446}
           alt="Aaron Smyth"
-          w={{ base: "90%", md: "400px" }}
+          w={{ base: "100%", md: "400px" }}
           h={"auto"}
         />
       </Link>
