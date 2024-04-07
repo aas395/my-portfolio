@@ -71,12 +71,12 @@ export const Header = ({
         position="relative"
         flexDir={{ base: "column", md: "row" }}
       >
-        {/* <MobileNav
+        <MobileNav
           links={links}
           activePageId={activePageId}
           linkStateVariants={linkStateVariants}
           setActivePageId={setActivePageId}
-        /> */}
+        />
         <Box
           gap={{ base: 0, md: 8 }}
           as={motion.div}
@@ -109,6 +109,7 @@ export const Header = ({
                   color="#fff"
                   fontWeight={"bold"}
                   fontSize="20px"
+                  textShadow="0 0 3px #000"
                 >
                   {item.text}
                   <Flex
@@ -120,6 +121,7 @@ export const Header = ({
                     alignItems="center"
                     justifyContent="center"
                     height="2px"
+                    boxShadow={isActive ? "0 0 3px 0 #000" : "none"}
                   >
                     <Box
                       as={motion.div}

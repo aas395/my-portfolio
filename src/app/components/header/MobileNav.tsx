@@ -9,6 +9,7 @@ import {
   useBreakpointValue,
   useDisclosure,
   useOutsideClick,
+  Fade,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useRef } from "react";
@@ -16,8 +17,6 @@ import { type Link } from "./Header";
 
 export const MobileNav = ({
   links,
-  activePageId,
-  linkStateVariants,
   setActivePageId,
 }: {
   links: Link[];
@@ -42,54 +41,66 @@ export const MobileNav = ({
         !(e.target as HTMLDivElement).id.includes("menu-button")
       ) {
         onClose();
-        buttonRef.current?.blur();
       }
     },
   });
-
+  console.log(isOpen);
   return (
-    <Box className="flex md:hidden" flexDir="column" alignItems="center">
+    <Box
+      className="flex md:hidden"
+      flexDir="column"
+      alignItems="center"
+      position="fixed"
+      bottom="2dvh"
+      right="3vw"
+    >
       <Menu>
-        <MenuButton
-          as={IconButton}
-          aria-label="Options"
-          icon={<HamburgerIcon pointerEvents="none" />}
-          variant="outline"
-          className="md:hidden"
-          id="menu-button"
-          bgColor={isOpen ? "gray.100" : "transparent"}
-          onClick={() => {
-            onToggle();
-          }}
-          color={isOpen ? "#000" : "#fff"}
-          backdropFilter="blur(8px)"
-          flexGrow={0}
-          _focusVisible={{
-            bgColor: "#fff",
-            color: "#000",
-          }}
-          ref={buttonRef}
-        />
+        <Fade in={true} transition={{ enter: { duration: 0.25, delay: 2 } }}>
+          <MenuButton
+            as={IconButton}
+            aria-label="Options"
+            icon={<HamburgerIcon pointerEvents="none" boxSize="22px" />}
+            variant="outline"
+            className="md:hidden"
+            id="menu-button"
+            onClick={() => {
+              onToggle();
+            }}
+            bgColor={isOpen ? "#fff" : "transparent"}
+            color={isOpen ? "#000" : "#fff"}
+            backdropFilter="blur(8px)"
+            flexGrow={0}
+            _hover={{
+              bgColor: "#fff",
+              color: "#000",
+            }}
+            ref={buttonRef}
+            borderWidth="2px"
+            borderRadius="50%"
+            w="44px"
+            h="44px"
+          />
+        </Fade>
         {showMenu && (
           <Flex
-            gap={{ base: 0, md: 8 }}
+            gap={{ base: 2, md: 8 }}
             as={motion.div}
             flexDir={{ base: "column", md: "row" }}
-            top={{ base: "10px" }}
-            left="0"
-            className="relative"
+            bottom="52px"
             animate={showMenu ? "visible" : "hidden"}
             variants={variants}
             ref={menuRef}
             boxShadow={{ base: "md", md: "none" }}
-            borderRadius={{ base: "md", md: "none" }}
+            borderRadius={{ base: "lg", md: "none" }}
             p={{ base: 4, md: 0 }}
-            bgColor={{ base: "rgba(255,255,255,.2)", md: "none" }}
-            backdropFilter={{ base: "blur(8px)", md: "none" }}
+            bgColor={{ base: "rgba(200,200,200,.4)", md: "none" }}
+            backdropFilter={{ base: "contrast(20%) blur(9px)", md: "none" }}
             flexShrink={0}
+            position="absolute"
+            right="0"
+            px={8}
           >
             {links.map((item) => {
-              const isActive = `#${activePageId}` === item.href;
               return (
                 <ChakraLink
                   as="a"
@@ -113,26 +124,9 @@ export const MobileNav = ({
                     width="100%"
                     whileHover="active"
                     color="#fff"
+                    fontSize="20px"
                   >
                     {item.text}
-                    <Flex
-                      as={motion.div}
-                      width="100%"
-                      position="absolute"
-                      left="0"
-                      bottom={{ base: "0px", md: "-6px" }}
-                      alignItems="center"
-                      justifyContent="center"
-                      height="1px"
-                    >
-                      <Box
-                        as={motion.div}
-                        display="block"
-                        backgroundColor="#fff"
-                        variants={linkStateVariants}
-                        animate={isActive ? "active" : undefined}
-                      />
-                    </Flex>
                   </Box>
                 </ChakraLink>
               );
