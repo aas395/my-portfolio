@@ -44,7 +44,7 @@ export const MobileNav = ({
       }
     },
   });
-  console.log(isOpen);
+
   return (
     <Box
       className="flex md:hidden"
@@ -63,17 +63,26 @@ export const MobileNav = ({
             variant="outline"
             className="md:hidden"
             id="menu-button"
-            onClick={() => {
+            onClick={(e) => {
               onToggle();
+
+              if (e.currentTarget.id.includes("menu-button")) {
+                console.log(e.currentTarget.id);
+                e.currentTarget.blur();
+              }
             }}
             bgColor={isOpen ? "#fff" : "transparent"}
             color={isOpen ? "#000" : "#fff"}
             backdropFilter="blur(8px)"
             flexGrow={0}
-            _hover={{
-              bgColor: "#fff",
-              color: "#000",
-            }}
+            _hover={
+              isOpen
+                ? {
+                    bgColor: "#fff",
+                    color: "#000",
+                  }
+                : { bgColor: "transparent", color: "#fff" }
+            }
             ref={buttonRef}
             borderWidth="2px"
             borderRadius="50%"
