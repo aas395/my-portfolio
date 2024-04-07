@@ -81,16 +81,27 @@ export const Contact = () => {
             <form onSubmit={handleSubmit(onSubmit)} className="w-full">
               <Flex flexDir="column" width="100%" gap={4}>
                 <FormControl isInvalid={!!errors.name}>
-                  <Input {...register("name")} w="100%" placeholder="Name*" />
+                  <Input
+                    {...register("name")}
+                    w="100%"
+                    placeholder="Name*"
+                    backdropFilter="contrast(80%)"
+                  />
                 </FormControl>
                 <FormControl isInvalid={!!errors.email}>
-                  <Input {...register("email")} w="100%" placeholder="Email*" />
+                  <Input
+                    {...register("email")}
+                    w="100%"
+                    placeholder="Email*"
+                    backdropFilter="contrast(80%)"
+                  />
                 </FormControl>
                 <FormControl isInvalid={!!errors.subject}>
                   <Input
                     {...register("subject")}
                     w="100%"
                     placeholder="Subject*"
+                    backdropFilter="contrast(80%)"
                   />
                 </FormControl>
                 <FormControl isInvalid={!!errors.body}>
@@ -99,6 +110,7 @@ export const Contact = () => {
                     w="100%"
                     placeholder="Body*"
                     resize="none"
+                    backdropFilter="contrast(80%)"
                   />
                 </FormControl>
                 <Text fontSize="12px">

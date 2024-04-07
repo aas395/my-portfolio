@@ -32,8 +32,8 @@ export const Header = ({
   setActivePageId: React.Dispatch<React.SetStateAction<string | undefined>>;
 }) => {
   const linkStateVariants = {
-    hidden: { height: "0", width: "0" },
-    active: { height: "1px", width: "100%" },
+    hidden: { height: "2px", width: "0" },
+    active: { height: "2px", width: "100%" },
   };
 
   return (
@@ -115,7 +115,7 @@ export const Header = ({
                     width="100%"
                     position="absolute"
                     left="0"
-                    bottom={{ base: "0px", md: "-6px" }}
+                    bottom={{ base: "0px", md: "-4px" }}
                     alignItems="center"
                     justifyContent="center"
                     height="2px"
