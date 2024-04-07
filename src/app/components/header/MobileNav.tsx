@@ -79,6 +79,7 @@ export const MobileNav = ({
             borderRadius="50%"
             w="44px"
             h="44px"
+            boxShadow="0 0 3px 0 #000"
           />
         </Fade>
         {showMenu && (
@@ -90,7 +91,7 @@ export const MobileNav = ({
             animate={showMenu ? "visible" : "hidden"}
             variants={variants}
             ref={menuRef}
-            boxShadow={{ base: "md", md: "none" }}
+            boxShadow={{ base: "0 0 3px 0 #000", md: "none" }}
             borderRadius={{ base: "lg", md: "none" }}
             p={{ base: 4, md: 0 }}
             bgColor={{ base: "rgba(200,200,200,.4)", md: "none" }}
