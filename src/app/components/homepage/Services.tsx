@@ -15,7 +15,8 @@ import { PageContainer } from "../PageContainer";
 import { AnimatedHeading } from "../AnimatedHeading";
 import { AnimatedContent } from "../AnimatedContent";
 import { NextPageLink } from "../NextPageLink";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { useInView } from "framer-motion";
 
 const services = [
   {
@@ -47,6 +48,8 @@ const services = [
 type Service = (typeof services)[0];
 
 export const Services = () => {
+  const contentRef = useRef(null);
+  const isInView = useInView(contentRef, { once: true });
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [activeService, setActiveService] = useState<Service>();
   const [delayedPageSectionTarget, setDelayedPageSectionTarget] =
@@ -57,7 +60,12 @@ export const Services = () => {
       id="services"
       backgroundImgSrc="/ferenc-horvath-cg78NV0c_Ow-unsplash.webp"
     >
-      <Flex flexDir="column" alignItems="center" alignSelf="center">
+      <Flex
+        flexDir="column"
+        alignItems="center"
+        alignSelf="center"
+        ref={contentRef}
+      >
         <AnimatedHeading>Services</AnimatedHeading>
         <AnimatedContent>
           <SimpleGrid
@@ -89,7 +97,7 @@ export const Services = () => {
             Reach Out
           </Button>
         </AnimatedContent>
-        <NextPageLink url="#work" />
+        <NextPageLink url="#work" show={isInView} />
       </Flex>
       <Modal
         isOpen={isOpen}

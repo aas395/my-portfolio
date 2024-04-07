@@ -1,12 +1,9 @@
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Flex, Icon, useBreakpointValue } from "@chakra-ui/react";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import Link from "next/link";
-import { useRef } from "react";
 
-export const NextPageLink = ({ url }: { url: string }) => {
-  const contentRef = useRef(null);
-  const isInView = useInView(contentRef, { once: true });
+export const NextPageLink = ({ url, show }: { url: string; show: boolean }) => {
   const bottomAmount = useBreakpointValue({ base: "15dvh", md: "40px" });
   const contentVariants = {
     initial: {
@@ -17,7 +14,7 @@ export const NextPageLink = ({ url }: { url: string }) => {
       opacity: 1,
       bottom: bottomAmount,
       transition: {
-        delay: 1,
+        delay: 1.5,
       },
     },
   };
@@ -30,10 +27,9 @@ export const NextPageLink = ({ url }: { url: string }) => {
       right="0"
       justifyContent="center"
       as={motion.div}
-      animate={isInView ? "visible" : "initial"}
+      animate={show ? "visible" : "initial"}
       variants={contentVariants}
       initial="initial"
-      ref={contentRef}
       zIndex={100}
     >
       <Flex as={Link} href={url} flexDir="column" alignItems="center">

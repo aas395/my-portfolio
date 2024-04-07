@@ -3,8 +3,13 @@ import { PageContainer } from "../PageContainer";
 import { AnimatedHeading } from "../AnimatedHeading";
 import { AnimatedContent } from "../AnimatedContent";
 import { NextPageLink } from "../NextPageLink";
+import { useRef } from "react";
+import { useInView } from "framer-motion";
 
 export const Work = () => {
+  const contentRef = useRef(null);
+  const isInView = useInView(contentRef, { once: true });
+
   return (
     <PageContainer
       id="work"
@@ -18,6 +23,7 @@ export const Work = () => {
         textAlign="center"
         w="100%"
         overflow="hidden"
+        ref={contentRef}
       >
         <AnimatedHeading>Work</AnimatedHeading>
         <AnimatedContent w="100%">
@@ -73,7 +79,7 @@ export const Work = () => {
             />
           </Flex>
         </AnimatedContent>
-        <NextPageLink url="#contact" />
+        <NextPageLink url="#contact" show={isInView} />
       </Flex>
     </PageContainer>
   );
