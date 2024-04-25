@@ -69,7 +69,7 @@ export const Services = () => {
         <AnimatedHeading>Services</AnimatedHeading>
         <AnimatedContent>
           <SimpleGrid
-            columns={{ base: 2, xl: 3 }}
+            columns={{ base: 2 }}
             gap={16}
             textAlign={{ base: "center", md: "left" }}
           >
@@ -150,7 +150,7 @@ const ServiceItem = ({
       zIndex="1"
       justifyContent={{ base: "space-between", md: "initial" }}
     >
-      <Text as="h3" fontWeight="bold" mb={4}>
+      <Text as="h3" mb={4} variant="itemTitle">
         {service.title}
       </Text>
       <Text className="hidden md:block">{service.description}</Text>

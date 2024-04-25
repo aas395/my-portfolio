@@ -108,7 +108,7 @@ export const Header = ({
                   whileHover="active"
                   color="#fff"
                   fontWeight={"bold"}
-                  fontSize="20px"
+                  fontSize="22px"
                   textShadow="0 0 3px #000"
                 >
                   {item.text}

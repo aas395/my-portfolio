@@ -20,6 +20,7 @@ export const AnimatedHeading = ({
       ref={headerRef}
       position="relative"
       color="#fff"
+      fontSize={{ base: "4xl", md: "5xl", lg: "5xl" }}
       {...props}
     >
       {children}

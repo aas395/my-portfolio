@@ -105,7 +105,7 @@ const WorkHistoryItem = ({
       textAlign="left"
       w={{ base: "auto", md: "calc(33.33% - 32px)" }}
     >
-      <Text as="h3" fontWeight="bold">
+      <Text as="h3" variant="itemTitle">
         {title}
       </Text>
       <Text>{description}</Text>

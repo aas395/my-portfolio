@@ -30,6 +30,18 @@ export const theme = extendTheme({
         },
       },
     },
+    Text: {
+      baseStyle: {
+        fontSize: { base: "md", md: "xl" },
+      },
+      variants: {
+        itemTitle: {
+          fontSize: { base: "4xl", md: "2xl", lg: "3xl" },
+          fontWeight: "bold",
+          lineHeight: "1.25",
+        },
+      },
+    },
   },
 });
 
