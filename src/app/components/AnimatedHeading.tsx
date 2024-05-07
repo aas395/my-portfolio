@@ -12,7 +12,7 @@ export const AnimatedHeading = ({
 
   return (
     <Heading
-      as={motion.h2}
+      as={motion.h1}
       mb={4}
       variants={headerVariants}
       initial="initial"

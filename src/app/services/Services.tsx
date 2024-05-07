@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Button,
   Flex,
@@ -11,12 +13,10 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
-import { PageContainer } from "../PageContainer";
-import { AnimatedHeading } from "../AnimatedHeading";
-import { AnimatedContent } from "../AnimatedContent";
-import { NextPageLink } from "../NextPageLink";
+import { PageContainer } from "../components/PageContainer";
+import { AnimatedHeading } from "../components/AnimatedHeading";
+import { AnimatedContent } from "../components/AnimatedContent";
 import { useRef, useState } from "react";
-import { useInView } from "framer-motion";
 
 const services = [
   {
@@ -49,7 +49,6 @@ type Service = (typeof services)[0];
 
 export const Services = () => {
   const contentRef = useRef(null);
-  const isInView = useInView(contentRef, { once: true });
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [activeService, setActiveService] = useState<Service>();
   const [delayedPageSectionTarget, setDelayedPageSectionTarget] =
@@ -97,7 +96,6 @@ export const Services = () => {
             Reach Out
           </Button>
         </AnimatedContent>
-        <NextPageLink url="#work" show={isInView} />
       </Flex>
       <Modal
         isOpen={isOpen}

@@ -1,14 +1,13 @@
+"use client";
+
 import { Flex, Link, Text } from "@chakra-ui/react";
-import { PageContainer } from "../PageContainer";
-import { AnimatedHeading } from "../AnimatedHeading";
-import { AnimatedContent } from "../AnimatedContent";
-import { NextPageLink } from "../NextPageLink";
+import { PageContainer } from "../components/PageContainer";
+import { AnimatedHeading } from "../components/AnimatedHeading";
+import { AnimatedContent } from "../components/AnimatedContent";
 import { useRef } from "react";
-import { useInView } from "framer-motion";
 
 export const Work = () => {
   const contentRef = useRef(null);
-  const isInView = useInView(contentRef, { once: true });
 
   return (
     <PageContainer
@@ -79,7 +78,6 @@ export const Work = () => {
             />
           </Flex>
         </AnimatedContent>
-        <NextPageLink url="#contact" show={isInView} />
       </Flex>
     </PageContainer>
   );
@@ -108,9 +106,9 @@ const WorkHistoryItem = ({
       <Text as="h3" variant="itemTitle">
         {title}
       </Text>
-      <Text>{description}</Text>
+      <Text lineHeight={6}>{description}</Text>
       {linkUrl && (
-        <Link href={linkUrl} fontWeight="bold" target="_blank">
+        <Link href={linkUrl} fontWeight="bold" target="_blank" fontSize="xl">
           {linkText}
         </Link>
       )}

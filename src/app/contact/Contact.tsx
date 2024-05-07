@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Button,
   Flex,
@@ -8,14 +10,14 @@ import {
   Link,
   useToast,
 } from "@chakra-ui/react";
-import { PageContainer } from "../PageContainer";
+import { PageContainer } from "../components/PageContainer";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import axios from "axios";
 import { useReCaptcha } from "next-recaptcha-v3";
-import { AnimatedHeading } from "../AnimatedHeading";
-import { AnimatedContent } from "../AnimatedContent";
+import { AnimatedHeading } from "../components/AnimatedHeading";
+import { AnimatedContent } from "../components/AnimatedContent";
 import { useEffect } from "react";
 
 const schema = yup.object({

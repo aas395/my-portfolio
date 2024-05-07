@@ -15,15 +15,7 @@ import { motion } from "framer-motion";
 import { useRef } from "react";
 import { type Link } from "./Header";
 
-export const MobileNav = ({
-  links,
-  setActivePageId,
-}: {
-  links: Link[];
-  activePageId: string | undefined;
-  linkStateVariants: Record<string, {}>;
-  setActivePageId: React.Dispatch<React.SetStateAction<string | undefined>>;
-}) => {
+export const MobileNav = ({ links }: { links: Link[] }) => {
   const { isOpen, onClose, onToggle } = useDisclosure();
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -117,7 +109,6 @@ export const MobileNav = ({
                   key={item.href}
                   href={item.href}
                   onClick={() => {
-                    setActivePageId(item.href.slice(1));
                     onClose();
                   }}
                   position="relative"

@@ -1,36 +1,34 @@
+"use client";
+
 import { Link, Image } from "@chakra-ui/next-js";
 import { Flex, Container, Box } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { MobileNav } from "./MobileNav";
+import { usePathname } from "next/navigation";
 
 const links = [
   {
-    href: "#about",
+    href: "/about",
     text: "About",
   },
   {
-    href: "#services",
+    href: "/services",
     text: "Services",
   },
   {
-    href: "#work",
+    href: "/work",
     text: "Work",
   },
   {
-    href: "#contact",
+    href: "/contact",
     text: "Contact",
   },
 ];
 
 export type Link = (typeof links)[0];
 
-export const Header = ({
-  activePageId,
-  setActivePageId,
-}: {
-  activePageId: string | undefined;
-  setActivePageId: React.Dispatch<React.SetStateAction<string | undefined>>;
-}) => {
+export const Header = () => {
+  const pathname = usePathname();
   const linkStateVariants = {
     hidden: { height: "2px", width: "0" },
     active: { height: "2px", width: "100%" },
@@ -52,7 +50,7 @@ export const Header = ({
       h={{ base: "auto", md: "132px" }}
       flexDirection={{ base: "column", md: "row" }}
     >
-      <Link href="#hero" color="#fff" mt={{ base: "24px", md: "16px" }}>
+      <Link href="/" color="#fff" mt={{ base: "24px", md: "16px" }}>
         <Image
           src="/logo.svg"
           width={478.04575}
@@ -71,12 +69,7 @@ export const Header = ({
         position="relative"
         flexDir={{ base: "column", md: "row" }}
       >
-        <MobileNav
-          links={links}
-          activePageId={activePageId}
-          linkStateVariants={linkStateVariants}
-          setActivePageId={setActivePageId}
-        />
+        <MobileNav links={links} />
         <Box
           gap={{ base: 0, md: 8 }}
           as={motion.div}
@@ -84,15 +77,12 @@ export const Header = ({
           className="hidden md:flex"
         >
           {links.map((item) => {
-            const isActive = `#${activePageId}` === item.href;
+            const isActive = pathname === item.href;
             return (
               <Link
                 as="a"
                 key={item.href}
                 href={item.href}
-                onClick={() => {
-                  setActivePageId(item.href.slice(1));
-                }}
                 position="relative"
                 display="block"
                 justifyContent="center"
