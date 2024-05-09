@@ -1,7 +1,10 @@
 import { headerVariants } from "@/theme";
 import { Heading, HeadingProps } from "@chakra-ui/react";
 import { motion, useInView } from "framer-motion";
+import { Lato } from "next/font/google";
 import { PropsWithChildren, useRef } from "react";
+
+const lato = Lato({ subsets: ["latin"], weight: ["900", "400"] });
 
 export const AnimatedHeading = ({
   children,
@@ -21,6 +24,7 @@ export const AnimatedHeading = ({
       position="relative"
       color="#fff"
       fontSize={{ base: "4xl", md: "5xl", lg: "5xl" }}
+      className={lato.className}
       {...props}
     >
       {children}
