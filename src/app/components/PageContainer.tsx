@@ -26,7 +26,7 @@ export const PageContainer = ({
       >
         {children}
       </Container>
-      <Box>
+      <Box position="fixed" height="100vh" w="100vw" top={0}>
         <Box
           position="absolute"
           top="0"
