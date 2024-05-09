@@ -24,7 +24,7 @@ export const Hero = () => {
         ref={contentRef}
       >
         <AnimatedHeading zIndex="100" textAlign="center">
-          Full-Stack Web and Mobile Developer
+          Web Development and Mobile App Development Done Right
         </AnimatedHeading>
         <AnimatedHeading
           as={motion.h2}
