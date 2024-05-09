@@ -8,7 +8,8 @@ import { Footer } from "./components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Full-stack Web and Mobile Developer | Aaron Smyth",
+  title:
+    "Web Development, Mobile App Development, App Development | Aaron Smyth",
   description:
     "Build your next website or mobile app with a full-stack developer with over 15 years of experience.",
 };

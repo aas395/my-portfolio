@@ -37,7 +37,7 @@ export const theme = extendTheme({
       },
       variants: {
         itemTitle: {
-          fontSize: { base: "4xl", md: "2xl", lg: "3xl" },
+          fontSize: { base: "3xl", md: "2xl", lg: "3xl" },
           fontWeight: "bold",
         },
       },
