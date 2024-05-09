@@ -34,7 +34,7 @@ export const Hero = () => {
           fontWeight="normal"
           className={inter.className}
         >
-          Build websites, web applications, and mobile apps that move your
+          I build websites, web applications, and mobile apps that move your
           business forward.
         </AnimatedHeading>
       </Flex>
