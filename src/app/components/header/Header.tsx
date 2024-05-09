@@ -8,16 +8,16 @@ import { usePathname } from "next/navigation";
 
 const links = [
   {
-    href: "/about",
-    text: "About",
-  },
-  {
     href: "/services",
     text: "Services",
   },
   {
     href: "/work",
     text: "Work",
+  },
+  {
+    href: "/about",
+    text: "About",
   },
   {
     href: "/contact",
@@ -37,7 +37,7 @@ export const Header = () => {
   return (
     <Container
       as="header"
-      position="fixed"
+      position={{ base: "relative", md: "fixed" }}
       top="0"
       left="0"
       right="0"

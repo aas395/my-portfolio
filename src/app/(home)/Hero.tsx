@@ -10,8 +10,6 @@ export const Hero = () => {
   const contentRef = useRef(null);
   return (
     <PageContainer
-      alignItems="center"
-      justifyContent="center"
       id="hero"
       backgroundImgSrc="/trevor-hayes-IA8FR0RyJDE-unsplash.webp"
     >

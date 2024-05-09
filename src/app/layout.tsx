@@ -20,11 +20,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} min-h-[100vh]`}>
         <Providers>
-          <Header />
-          {children}
-          <Footer />
+          <div className=" min-h-screen flex flex-col justify-between gap-8">
+            <Header />
+            {children}
+            <Footer />
+          </div>
         </Providers>
       </body>
       <GoogleAnalytics gaId="G-9YEB5EJJY9" />

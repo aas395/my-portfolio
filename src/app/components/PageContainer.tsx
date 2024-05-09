@@ -10,19 +10,16 @@ export const PageContainer = ({
   /* this type definition is due to a ts-related bug. Solution here: https://github.com/styled-components/styled-components/issues/4166 */
   return (
     <Box
-      minHeight="100vh"
       w="100vw"
       scrollSnapAlign="start"
       display="flex"
-      position="relative"
+      position="initial"
+      paddingTop={{ base: 0, md: 48 }}
       {...props}
     >
       <Container
         w="100vw"
-        h="100vh"
         justifyContent="center"
-        alignItems="center"
-        display="flex"
         position="relative"
         maxWidth={{ base: "100vw", md: "600px", xl: "960px" }}
         zIndex={1}

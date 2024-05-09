@@ -87,7 +87,7 @@ export const Services = () => {
           </SimpleGrid>
           <Button
             as="a"
-            href="#contact"
+            href="/contact"
             mt={12}
             w={{ base: "100%", sm: "80%", md: "200px" }}
             alignSelf="center"
@@ -115,13 +115,14 @@ export const Services = () => {
           <ModalBody>
             <Text>{activeService?.description}</Text>
             <Button
+              as="a"
+              href="/contact"
               mt={4}
               w="100%"
               alignSelf="center"
               onClick={(e) => {
                 e.stopPropagation();
                 onClose();
-                setDelayedPageSectionTarget("contact");
               }}
               mb={4}
             >
