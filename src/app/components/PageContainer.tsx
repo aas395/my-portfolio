@@ -21,7 +21,7 @@ export const PageContainer = ({
         w="100vw"
         justifyContent="center"
         position="relative"
-        maxWidth={{ base: "100vw", md: "600px", xl: "960px" }}
+        maxWidth={{ base: "100vw", md: "920px", xl: "960px" }}
         zIndex={1}
       >
         {children}

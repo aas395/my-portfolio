@@ -32,12 +32,13 @@ export const theme = extendTheme({
     },
     Text: {
       baseStyle: {
-        fontSize: { base: "md", md: "xl" },
+        fontSize: { base: "lg", md: "xl" },
         lineHeight: 1.33,
       },
       variants: {
         itemTitle: {
-          fontSize: { base: "3xl", md: "2xl", lg: "3xl" },
+          fontSize: { base: "2xl", md: "2xl", lg: "3xl" },
+          lineHeight: { base: 1.125, md: "auto" },
           fontWeight: "bold",
         },
       },

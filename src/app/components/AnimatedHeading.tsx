@@ -16,7 +16,7 @@ export const AnimatedHeading = ({
   return (
     <Heading
       as={motion.h1}
-      mb={4}
+      mb={{ base: 6, md: 4 }}
       variants={headerVariants}
       initial="initial"
       animate={isInView ? "visible" : "initial"}
@@ -24,6 +24,7 @@ export const AnimatedHeading = ({
       position="relative"
       color="#fff"
       fontSize={{ base: "4xl", md: "5xl", lg: "5xl" }}
+      lineHeight={{ base: "1.125", md: "auto" }}
       className={lato.className}
       {...props}
     >

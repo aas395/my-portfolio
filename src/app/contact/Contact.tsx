@@ -121,6 +121,7 @@ export const Contact = () => {
                   <Link
                     href="https://policies.google.com/privacy"
                     textDecoration="underline"
+                    target="_blank"
                   >
                     Privacy Policy
                   </Link>{" "}
@@ -128,6 +129,7 @@ export const Contact = () => {
                   <Link
                     href="https://policies.google.com/terms"
                     textDecoration="underline"
+                    target="_blank"
                   >
                     Terms of Service
                   </Link>{" "}

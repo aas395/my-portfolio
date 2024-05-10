@@ -1,22 +1,11 @@
 "use client";
 
-import {
-  Button,
-  Flex,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalHeader,
-  ModalOverlay,
-  SimpleGrid,
-  Text,
-  useDisclosure,
-} from "@chakra-ui/react";
+import { Button, Flex, SimpleGrid, Text } from "@chakra-ui/react";
 import { PageContainer } from "../components/PageContainer";
 import { AnimatedHeading } from "../components/AnimatedHeading";
 import { AnimatedContent } from "../components/AnimatedContent";
-import { useRef, useState } from "react";
+import { useRef } from "react";
+import { Link } from "@chakra-ui/next-js";
 
 const services = [
   {
@@ -31,6 +20,12 @@ const services = [
     description:
       "I build mobile apps using React Native. Bring me in just for the client side or hire me to architect and build everything from start to finish, including getting into the App Store.",
   },
+  // {
+  //   key: "seo",
+  //   title: "Search Engine Optimization",
+  //   description:
+  //     "",
+  // },
   {
     key: "business_process_consulting",
     title: "Business Process Consulting",
@@ -41,18 +36,12 @@ const services = [
     key: "startup_consulting",
     title: "Startup Consulting",
     description:
-      "I help startups get to revenue faster by helping them get clear on the problems your target market has and how to address them. Hire me to get to product/market fit and build a product your customers will love and pay you for.",
+      "I help startups get to revenue faster by helping them identify the problems their target market has and how to address them. Hire me to get to product/market fit and build a product your customers will pay you for and love.",
   },
 ];
 
-type Service = (typeof services)[0];
-
 export const Services = () => {
   const contentRef = useRef(null);
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const [activeService, setActiveService] = useState<Service>();
-  const [delayedPageSectionTarget, setDelayedPageSectionTarget] =
-    useState<string>();
 
   return (
     <PageContainer
@@ -68,80 +57,30 @@ export const Services = () => {
         <AnimatedHeading>Services</AnimatedHeading>
         <AnimatedContent>
           <SimpleGrid
-            columns={{ base: 2 }}
-            gap={16}
+            columns={{ base: 1, md: 2 }}
+            gap={{ base: 8, md: 16 }}
             textAlign={{ base: "center", md: "left" }}
           >
             {services.map((service) => {
-              return (
-                <ServiceItem
-                  key={service.key}
-                  service={service}
-                  onLearnMoreButtonClick={(service) => {
-                    setActiveService(service);
-                    onOpen();
-                  }}
-                />
-              );
+              return <ServiceItem key={service.key} service={service} />;
             })}
           </SimpleGrid>
           <Button
-            as="a"
+            as={Link}
             href="/contact"
             mt={12}
             w={{ base: "100%", sm: "80%", md: "200px" }}
             alignSelf="center"
-            display={{ base: "none", md: "flex" }}
           >
             Reach Out
           </Button>
         </AnimatedContent>
       </Flex>
-      <Modal
-        isOpen={isOpen}
-        onClose={onClose}
-        isCentered
-        onCloseComplete={() => {
-          if (delayedPageSectionTarget) {
-            window.history.pushState({}, "", `#${delayedPageSectionTarget}`);
-            setDelayedPageSectionTarget(undefined);
-          }
-        }}
-      >
-        <ModalOverlay />
-        <ModalContent w="90%">
-          <ModalHeader>{activeService?.title}</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <Text>{activeService?.description}</Text>
-            <Button
-              as="a"
-              href="/contact"
-              mt={4}
-              w="100%"
-              alignSelf="center"
-              onClick={(e) => {
-                e.stopPropagation();
-                onClose();
-              }}
-              mb={4}
-            >
-              Reach Out
-            </Button>
-          </ModalBody>
-        </ModalContent>
-      </Modal>
     </PageContainer>
   );
 };
 
-const ServiceItem = ({
-  service,
-  onLearnMoreButtonClick,
-}: {
-  service: (typeof services)[0];
-  onLearnMoreButtonClick: (_service: Service) => void;
-}) => {
+const ServiceItem = ({ service }: { service: (typeof services)[0] }) => {
   return (
     <Flex
       flexDir="column"
@@ -149,16 +88,10 @@ const ServiceItem = ({
       zIndex="1"
       justifyContent={{ base: "space-between", md: "initial" }}
     >
-      <Text as="h3" mb={4} variant="itemTitle">
+      <Text as="h3" mb={{ base: 1.5, md: 4 }} variant="itemTitle">
         {service.title}
       </Text>
-      <Text className="hidden md:block">{service.description}</Text>
-      <Button
-        className="block md:hidden"
-        onClick={() => onLearnMoreButtonClick(service)}
-      >
-        Learn More
-      </Button>
+      <Text>{service.description}</Text>
     </Flex>
   );
 };

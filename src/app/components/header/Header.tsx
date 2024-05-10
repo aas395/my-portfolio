@@ -80,7 +80,6 @@ export const Header = () => {
             const isActive = pathname === item.href;
             return (
               <Link
-                as="a"
                 key={item.href}
                 href={item.href}
                 position="relative"

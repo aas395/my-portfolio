@@ -3,7 +3,6 @@ import {
   Box,
   Flex,
   IconButton,
-  Link as ChakraLink,
   Menu,
   MenuButton,
   useBreakpointValue,
@@ -11,6 +10,7 @@ import {
   useOutsideClick,
   Fade,
 } from "@chakra-ui/react";
+import { Link as ChakraLink } from "@chakra-ui/next-js";
 import { motion } from "framer-motion";
 import { useRef } from "react";
 import { type Link } from "./Header";
@@ -59,7 +59,6 @@ export const MobileNav = ({ links }: { links: Link[] }) => {
               onToggle();
 
               if (e.currentTarget.id.includes("menu-button")) {
-                console.log(e.currentTarget.id);
                 e.currentTarget.blur();
               }
             }}
@@ -105,7 +104,6 @@ export const MobileNav = ({ links }: { links: Link[] }) => {
             {links.map((item) => {
               return (
                 <ChakraLink
-                  as="a"
                   key={item.href}
                   href={item.href}
                   onClick={() => {
