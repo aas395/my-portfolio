@@ -99,6 +99,7 @@ export const Header = () => {
                   fontWeight={"bold"}
                   fontSize="22px"
                   textShadow="0 0 3px #000"
+                  role="group"
                 >
                   {item.text}
                   <Flex
@@ -110,7 +111,6 @@ export const Header = () => {
                     alignItems="center"
                     justifyContent="center"
                     height="2px"
-                    boxShadow={isActive ? "0 0 3px 0 #000" : "none"}
                   >
                     <Box
                       as={motion.div}

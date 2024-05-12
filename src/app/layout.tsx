@@ -4,12 +4,12 @@ import { Providers } from "./providers";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Header } from "./components/header/Header";
 import { Footer } from "./components/Footer";
+import { MY_NAME, PAGE_TITLE_TAGLINE } from "@/constants";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title:
-    "Web Development, Mobile App Development, App Development | Aaron Smyth",
+  title: `${PAGE_TITLE_TAGLINE} | ${MY_NAME}`,
   description:
     "Build your next website or mobile app with a full-stack developer with over 15 years of experience.",
 };

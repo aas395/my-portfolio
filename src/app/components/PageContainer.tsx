@@ -5,8 +5,11 @@ import { motion, useInView } from "framer-motion";
 export const PageContainer = ({
   children,
   backgroundImgSrc,
+  // contentBackgroundColor = "#666",
   ...props
-}: PropsWithChildren<ContainerProps & { backgroundImgSrc: string }>) => {
+}: PropsWithChildren<
+  ContainerProps & { backgroundImgSrc: string; contentBackgroundColor?: string }
+>) => {
   /* this type definition is due to a ts-related bug. Solution here: https://github.com/styled-components/styled-components/issues/4166 */
   return (
     <Box
@@ -14,18 +17,20 @@ export const PageContainer = ({
       scrollSnapAlign="start"
       display="flex"
       position="initial"
-      paddingTop={{ base: 0, md: 48 }}
+      paddingTop={{ base: 0, md: 72 }}
       {...props}
     >
-      <Container
-        w="100vw"
-        justifyContent="center"
-        position="relative"
-        maxWidth={{ base: "100vw", md: "920px", xl: "960px" }}
-        zIndex={1}
-      >
-        {children}
-      </Container>
+      <Box w="100%" zIndex={1}>
+        <Container
+          w="100vw"
+          justifyContent="center"
+          position="relative"
+          maxWidth={{ base: "100vw", md: "920px", xl: "960px" }}
+          zIndex={1}
+        >
+          {children}
+        </Container>
+      </Box>
       <Box position="fixed" height="100vh" w="100vw" top={0}>
         <Box
           position="absolute"

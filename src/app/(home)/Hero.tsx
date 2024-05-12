@@ -15,6 +15,7 @@ export const Hero = () => {
     <PageContainer
       id="hero"
       backgroundImgSrc="/trevor-hayes-IA8FR0RyJDE-unsplash.webp"
+      contentBackgroundColor="transparent"
     >
       <Flex
         flexDir="column"

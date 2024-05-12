@@ -1,18 +1,9 @@
-import { ResolvingMetadata } from "next";
 import { Contact } from "./Contact";
 
-export const generateMetadata = async (
-  params: {
-    params: Record<string, string> | undefined;
-    searchParams: { [key: string]: string | string[] | undefined };
-  },
-  parent: ResolvingMetadata
-) => {
-  const parentData = await parent;
-
-  return {
-    title: `Contact | ${parentData.title?.absolute}`,
-  };
+export const metadata = {
+  title: `Contact`,
+  description:
+    "Contact Aaron Smyth to talk about web development, mobile app development, SEO, or your startup project",
 };
 
 export default function Page() {
