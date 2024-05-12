@@ -1,7 +1,7 @@
 import { Work } from "./Work";
 
 export const metadata = {
-  title: `Work`,
+  title: `Web Development and Mobile App Development Portfolio`,
   description: `Current and past web development and mobile app development projects from Aaron Smyth`,
 };
 

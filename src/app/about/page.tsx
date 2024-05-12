@@ -1,8 +1,8 @@
 import { About } from "./About";
 
 export const metadata = {
-  title: `About`,
-  description: "About Aaron Smyth: history and interests",
+  title: `Meet Aaron Smyth, Web Developer and Mobile App Developer`,
+  description: "Learn about Aaron Smyth's work history and interests",
 };
 
 export default function Page() {
