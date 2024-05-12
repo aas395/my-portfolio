@@ -43,6 +43,24 @@ export const theme = extendTheme({
         },
       },
     },
+    Button: {
+      baseStyle: {
+        fontSize: { base: "lg", md: "xl" },
+        lineHeight: 1.33,
+        height: { base: "14", md: "10" },
+        boxShadow: "0 0 3px 0 #000",
+        _hover: {
+          textDecoration: "none",
+        },
+      },
+      variants: {
+        solid: {
+          _hover: {
+            backgroundColor: "#ccc",
+          },
+        },
+      },
+    },
   },
 });
 

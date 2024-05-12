@@ -20,7 +20,7 @@ export const About = () => {
         ref={contentRef}
       >
         <AnimatedHeading>About</AnimatedHeading>
-        <AnimatedContent>
+        <AnimatedContent fontSize="xl">
           <Text textAlign="center" position="relative" mb={4}>
             With over 15 years of full-stack software development experience and
             a client list ranging from solo-founder startups to multinational

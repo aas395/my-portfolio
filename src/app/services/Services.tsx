@@ -20,12 +20,12 @@ const services = [
     description:
       "I build mobile apps using React Native. Bring me in just for the client side or hire me to architect and build everything from start to finish, including getting into the App Store.",
   },
-  // {
-  //   key: "seo",
-  //   title: "Search Engine Optimization",
-  //   description:
-  //     "",
-  // },
+  {
+    key: "seo",
+    title: "Search Engine Optimization",
+    description:
+      "I help companies make the most of their online presence by optimizing their websites for search engines. Search engines are about more than just text and many people leave money on the table by only focusing on traditional factors. Hire me to bring in more customers from search engine traffic.",
+  },
   {
     key: "business_process_consulting",
     title: "Business Process Consulting",
@@ -69,7 +69,7 @@ export const Services = () => {
             as={Link}
             href="/contact"
             mt={12}
-            w={{ base: "100%", sm: "80%", md: "200px" }}
+            w={{ base: "100%", md: "200px" }}
             alignSelf="center"
           >
             Reach Out

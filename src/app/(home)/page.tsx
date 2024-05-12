@@ -11,7 +11,7 @@ export const generateMetadata = async (
   const parentData = await parent;
 
   return {
-    title: `Home | ${parentData.title?.absolute}`,
+    title: `${parentData.title?.absolute}`,
   };
 };
 

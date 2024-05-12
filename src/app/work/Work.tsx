@@ -39,7 +39,7 @@ export const Work = () => {
             overflowX="auto"
             justifyContent="flex-start"
             flexWrap={{ base: "initial", md: "wrap" }}
-            flexDir="row"
+            flexDir={{ base: "column", md: "row" }}
           >
             <WorkHistoryItem
               title="Hey Hei (AB InBev)"
@@ -69,7 +69,6 @@ export const Work = () => {
               linkUrl="https://artmitzvah.art"
               linkText="artmitzvah.art"
             />
-
             <WorkHistoryItem
               title="Hopzee"
               description="Built an iOS app using React Native and a Django/DRF back end. Design provided by the client."
@@ -98,10 +97,9 @@ const WorkHistoryItem = ({
     <Flex
       flexDir="column"
       gap={2}
-      maxW="75vw"
       flexShrink={0}
-      textAlign="left"
       w={{ base: "auto", md: "calc(33.33% - 32px)" }}
+      textAlign={{ base: "center", md: "left" }}
     >
       <Text as="h3" variant="itemTitle">
         {title}
