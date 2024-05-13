@@ -12,6 +12,10 @@ export const metadata = {
   title: `${PAGE_TITLE_TAGLINE} | ${MY_NAME}`,
   description:
     "Build your next website or mobile app with a full-stack developer with over 15 years of experience.",
+  metadataBase: new URL(`https://www.aaronsmyth.co`),
+  alternates: {
+    canonical: "./",
+  },
 };
 
 export default function RootLayout({
