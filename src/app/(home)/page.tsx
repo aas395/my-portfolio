@@ -1,5 +1,5 @@
-import { Hero } from "./Hero";
+import { Home } from "./Home";
 
-export default function Home() {
-  return <Hero />;
+export default function Page() {
+  return <Home />;
 }
