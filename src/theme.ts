@@ -62,6 +62,17 @@ export const theme = extendTheme({
       },
     },
   },
+  textStyles: {
+    h1: {
+      fontSize: { base: "4xl", md: "5xl", lg: "5xl" },
+    },
+    h2: {
+      fontSize: { base: "2xl", md: "4xl", lg: "4xl" },
+    },
+    h3: {
+      fontSize: { base: "2xl", md: "2xl" },
+    },
+  },
 });
 
 export const headerVariants = {
