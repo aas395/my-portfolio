@@ -11,10 +11,6 @@ import {
   Link,
   Toaster,
 } from "@chakra-ui/react";
-
-const PlainButton = chakra("button");
-
-const toaster = createToaster({ placement: "bottom-end" });
 import { PageContainer } from "../components/PageContainer";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -25,6 +21,11 @@ import { AnimatedHeading } from "../components/AnimatedHeading";
 import { AnimatedContent } from "../components/AnimatedContent";
 import { useEffect } from "react";
 import { PageSection } from "../components/PageSection";
+
+const PlainButton = chakra("button");
+const toaster = createToaster({ placement: "bottom-end" });
+const StyledToaster = Toaster as any;
+const ErrorText = Field.ErrorText as any;
 
 const schema = yup.object({
   name: yup.string().required("Required"),
@@ -97,7 +98,9 @@ export const Contact = () => {
                       color="#fff"
                       _placeholder={{ color: "#fff" }}
                     />
-                    <Field.ErrorText>{errors.name?.message}</Field.ErrorText>
+                    {errors.name?.message && (
+                      <ErrorText>{errors.name.message}</ErrorText>
+                    )}
                   </Field.Root>
                   <Field.Root invalid={!!errors.email}>
                     <Input
@@ -108,7 +111,9 @@ export const Contact = () => {
                       color="#fff"
                       _placeholder={{ color: "#fff" }}
                     />
-                    <Field.ErrorText>{errors.email?.message}</Field.ErrorText>
+                    {errors.email?.message && (
+                      <ErrorText>{errors.email.message}</ErrorText>
+                    )}
                   </Field.Root>
                   <Field.Root invalid={!!errors.subject}>
                     <Input
@@ -120,7 +125,9 @@ export const Contact = () => {
                       color="#fff"
                       _placeholder={{ color: "#fff" }}
                     />
-                    <Field.ErrorText>{errors.subject?.message}</Field.ErrorText>
+                    {errors.subject?.message && (
+                      <ErrorText>{errors.subject.message}</ErrorText>
+                    )}
                   </Field.Root>
                   <Field.Root invalid={!!errors.body}>
                     <Textarea
@@ -132,7 +139,9 @@ export const Contact = () => {
                       color="#fff"
                       _placeholder={{ color: "#fff" }}
                     />
-                    <Field.ErrorText>{errors.body?.message}</Field.ErrorText>
+                    {errors.body?.message && (
+                      <ErrorText>{errors.body.message}</ErrorText>
+                    )}
                   </Field.Root>
                   <Text fontSize="12px">
                     This site is protected by reCAPTCHA and the Google{" "}
@@ -176,7 +185,7 @@ export const Contact = () => {
                     {isSubmitting ? "Sending..." : "Send"}
                   </PlainButton>
                 </Flex>
-                <Toaster toaster={toaster} />
+                <StyledToaster toaster={toaster} />
               </form>
             </FormProvider>
           </AnimatedContent>

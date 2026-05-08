@@ -6,7 +6,7 @@ import { motion, useInView } from "framer-motion";
 import { PropsWithChildren, useRef } from "react";
 
 const ChakraDiv = chakra("div");
-const MotionDiv = motion(ChakraDiv);
+const MotionDiv = motion(ChakraDiv) as any;
 
 export const AnimatedContent = ({
   children,

@@ -9,7 +9,7 @@ import { PropsWithChildren, useRef } from "react";
 const lato = Lato({ subsets: ["latin"], weight: ["900", "400"] });
 
 const ChakraH1 = chakra("h1");
-const MotionH1 = motion(ChakraH1);
+const MotionH1 = motion(ChakraH1) as any;
 
 export const AnimatedHeading = ({
   children,

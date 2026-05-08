@@ -2,9 +2,7 @@
 
 import { Menu as MenuIcon } from "lucide-react";
 import {
-  Box,
   chakra,
-  Flex,
   Icon,
   IconButton,
   useBreakpointValue,
@@ -15,10 +13,12 @@ import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 import { type Link } from "./Header";
 
+const ChakraDiv = chakra("div");
+const MotionDiv = motion(ChakraDiv) as any;
 const ChakraLink = chakra(NextLink);
 
 export const MobileNav = ({ links }: { links: Link[] }) => {
-  const { isOpen, onClose, onToggle } = useDisclosure();
+  const { open: isOpen, onClose, onToggle } = useDisclosure();
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const variants = {
@@ -43,7 +43,7 @@ export const MobileNav = ({ links }: { links: Link[] }) => {
   }, [onClose]);
 
   return (
-    <Box
+    <ChakraDiv
       className="flex md:hidden"
       flexDir="column"
       alignItems="center"
@@ -87,9 +87,9 @@ export const MobileNav = ({ links }: { links: Link[] }) => {
         </IconButton>
       </motion.div>
       {showMenu && (
-        <Flex
+        <MotionDiv
+          display="flex"
           gap={{ base: 2, md: 8 }}
-          as={motion.div}
           flexDir={{ base: "column", md: "row" }}
           bottom="52px"
           animate={showMenu ? "visible" : "hidden"}
@@ -121,21 +121,19 @@ export const MobileNav = ({ links }: { links: Link[] }) => {
                   textDecoration: "none",
                 }}
               >
-                <Box
-                  as={motion.div}
+                <ChakraDiv
                   height="100%"
                   width="100%"
-                  whileHover="active"
                   color="#fff"
                   fontSize="20px"
                 >
                   {item.text}
-                </Box>
+                </ChakraDiv>
               </ChakraLink>
             );
           })}
-        </Flex>
+        </MotionDiv>
       )}
-    </Box>
+    </ChakraDiv>
   );
 };
