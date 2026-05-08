@@ -28,10 +28,8 @@ export const Home = () => {
           <AnimatedHeading
             zIndex="100"
             textAlign="center"
-            // paddingTop={{ base: 0, md: 72 }}
-            textStyle="h1"
           >
-            Web Development and Mobile App Development Done Right
+            Web Development, Mobile App Development, and AI Consulting Done Right
           </AnimatedHeading>
           <AnimatedHeading
             as={motion.h2}
@@ -39,7 +37,7 @@ export const Home = () => {
             textAlign="center"
             fontWeight="normal"
             className={inter.className}
-            textStyle="h2"
+            fontSize={{ base: "2xl", md: "4xl" }}
           >
             I build websites, web applications, and mobile apps that move your
             business forward.
@@ -50,25 +48,25 @@ export const Home = () => {
         <AnimatedHeading
           as={motion.h3}
           textAlign="center"
-          textStyle="h3"
+          fontSize={{ base: "2xl", md: "2xl" }}
           mt={16}
         >
           About
         </AnimatedHeading>
-        <AnimatedContent fontSize="xl">
+        <AnimatedContent fontSize="xl" pb={16}>
           <Flex
             textAlign={{ base: "center", md: "left" }}
             flexDir="column"
             gap={4}
           >
-            <Text position="relative">
+            <Text position="relative" fontSize={{ base: "lg", md: "xl" }} lineHeight={1.33}>
               With over 15 years of full-stack software development experience
               and a client list ranging from solo-founder startups to
               multinational corporations, I bring a passion for technology, a
               business-first approach to software development, and a commitment
               to success to every project.
             </Text>
-            <Text>
+            <Text fontSize={{ base: "lg", md: "xl" }} lineHeight={1.33}>
               I got my start in 2007 in the New York tech startup scene and have
               been working on SaaS products ever since. I have been lucky enough
               to work with and learn from some of the world&apos;s most
@@ -78,7 +76,16 @@ export const Home = () => {
               roles where I can bring my experience in different disciplines to
               the table.
             </Text>
-            <Text>
+            <Text fontSize={{ base: "lg", md: "xl" }} lineHeight={1.33}>
+              I&apos;m also deeply passionate about the transformative potential
+              of AI. I help teams integrate AI tools into their development and
+              business workflows to dramatically increase productivity — from
+              AI-assisted coding and automated code review to building custom
+              solutions powered by large language models. The teams that learn
+              to work effectively with AI will have an enormous competitive
+              advantage, and I can help yours get there.
+            </Text>
+            <Text fontSize={{ base: "lg", md: "xl" }} lineHeight={1.33}>
               In addition to web and mobile development and startup life, I love
               traveling, rock climbing, foreign languages, food,
               entrepreneurship, and real estate investment.

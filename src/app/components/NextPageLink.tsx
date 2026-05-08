@@ -1,4 +1,4 @@
-import { ChevronDownIcon } from "@chakra-ui/icons";
+import { ChevronDown } from "lucide-react";
 import { Flex, Icon, useBreakpointValue } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -43,7 +43,7 @@ export const NextPageLink = ({ url, show }: { url: string; show: boolean }) => {
           }}
           transition={{ repeat: Infinity, repeatDelay: 1 }}
         >
-          <Icon as={ChevronDownIcon} boxSize={12} color="#fff" />
+          <Icon as={ChevronDown} boxSize={12} color="#fff" />
         </motion.div>
       </Flex>
     </Flex>

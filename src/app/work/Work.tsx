@@ -26,8 +26,8 @@ export const Work = () => {
           mt={40}
         >
           <AnimatedHeading>Work</AnimatedHeading>
-          <AnimatedContent w="100%">
-            <Text mb={8}>
+          <AnimatedContent w="100%" pb={16}>
+            <Text mb={8} fontSize={{ base: "lg", md: "xl" }} lineHeight={1.33}>
               The projects below represent my most recent work. Writing code and
               thinking through product features are my strongest skills -- I
               have a good eye but I like to leave visual/UI design to the pros.
@@ -99,12 +99,25 @@ const WorkHistoryItem = ({
       w={{ base: "auto", md: "calc(33.33% - 32px)" }}
       textAlign={{ base: "center", md: "left" }}
     >
-      <Text as="h3" variant="itemTitle">
+      <Text
+        as="h3"
+        fontSize={{ base: "2xl", lg: "3xl" }}
+        lineHeight={{ base: 1.125, md: "normal" }}
+        fontWeight="bold"
+      >
         {title}
       </Text>
-      <Text lineHeight={6}>{description}</Text>
+      <Text fontSize={{ base: "lg", md: "xl" }} lineHeight={1.33}>{description}</Text>
       {linkUrl && (
-        <Link href={linkUrl} fontWeight="bold" target="_blank" fontSize="xl">
+        <Link
+          href={linkUrl}
+          fontWeight="bold"
+          target="_blank"
+          fontSize="xl"
+          color="inherit"
+          textDecoration="none"
+          _hover={{ textDecoration: "underline" }}
+        >
           {linkText}
         </Link>
       )}
