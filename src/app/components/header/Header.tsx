@@ -16,10 +16,6 @@ const links = [
     text: "Work",
   },
   {
-    href: "/about",
-    text: "About",
-  },
-  {
     href: "/contact",
     text: "Contact",
   },

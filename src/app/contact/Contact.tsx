@@ -19,6 +19,7 @@ import { useReCaptcha } from "next-recaptcha-v3";
 import { AnimatedHeading } from "../components/AnimatedHeading";
 import { AnimatedContent } from "../components/AnimatedContent";
 import { useEffect } from "react";
+import { PageSection } from "../components/PageSection";
 
 const schema = yup.object({
   name: yup.string().required("Required"),
@@ -72,77 +73,83 @@ export const Contact = () => {
   };
 
   return (
-    <PageContainer
-      id="contact"
-      backgroundImgSrc="/geio-tischler-tQT5KiZSKpE-unsplash.webp"
-    >
-      <Flex flexDir="column" alignItems="center" alignSelf="center" w="100%">
-        <AnimatedHeading>Contact</AnimatedHeading>
-        <AnimatedContent>
-          <FormProvider {...formSettings}>
-            <form onSubmit={handleSubmit(onSubmit)} className="w-full">
-              <Flex flexDir="column" width="100%" gap={4}>
-                <FormControl isInvalid={!!errors.name}>
-                  <Input
-                    {...register("name")}
-                    w="100%"
-                    placeholder="Name*"
-                    backdropFilter="contrast(70%)"
-                  />
-                </FormControl>
-                <FormControl isInvalid={!!errors.email}>
-                  <Input
-                    {...register("email")}
-                    w="100%"
-                    placeholder="Email*"
-                    backdropFilter="contrast(70%)"
-                  />
-                </FormControl>
-                <FormControl isInvalid={!!errors.subject}>
-                  <Input
-                    {...register("subject")}
-                    w="100%"
-                    placeholder="Subject*"
-                    backdropFilter="contrast(70%)"
-                    autoComplete="off"
-                  />
-                </FormControl>
-                <FormControl isInvalid={!!errors.body}>
-                  <Textarea
-                    {...register("body")}
-                    w="100%"
-                    placeholder="Body*"
-                    resize="none"
-                    backdropFilter="contrast(70%)"
-                  />
-                </FormControl>
-                <Text fontSize="12px">
-                  This site is protected by reCAPTCHA and the Google{" "}
-                  <Link
-                    href="https://policies.google.com/privacy"
-                    textDecoration="underline"
-                    target="_blank"
-                  >
-                    Privacy Policy
-                  </Link>{" "}
-                  and{" "}
-                  <Link
-                    href="https://policies.google.com/terms"
-                    textDecoration="underline"
-                    target="_blank"
-                  >
-                    Terms of Service
-                  </Link>{" "}
-                  apply.
-                </Text>
-                <Button type="submit" isDisabled={isSubmitting}>
-                  {isSubmitting ? "Sending..." : "Send"}
-                </Button>
-              </Flex>
-            </form>
-          </FormProvider>
-        </AnimatedContent>
-      </Flex>
+    <PageContainer id="contact">
+      <PageSection backgroundImgSrc="/geio-tischler-tQT5KiZSKpE-unsplash.webp">
+        <Flex
+          flexDir="column"
+          alignItems="center"
+          alignSelf="center"
+          w="100%"
+          h="100vh"
+          mt={40}
+        >
+          <AnimatedHeading>Contact</AnimatedHeading>
+          <AnimatedContent>
+            <FormProvider {...formSettings}>
+              <form onSubmit={handleSubmit(onSubmit)} className="w-full">
+                <Flex flexDir="column" width="100%" gap={4}>
+                  <FormControl isInvalid={!!errors.name}>
+                    <Input
+                      {...register("name")}
+                      w="100%"
+                      placeholder="Name*"
+                      backdropFilter="contrast(70%)"
+                    />
+                  </FormControl>
+                  <FormControl isInvalid={!!errors.email}>
+                    <Input
+                      {...register("email")}
+                      w="100%"
+                      placeholder="Email*"
+                      backdropFilter="contrast(70%)"
+                    />
+                  </FormControl>
+                  <FormControl isInvalid={!!errors.subject}>
+                    <Input
+                      {...register("subject")}
+                      w="100%"
+                      placeholder="Subject*"
+                      backdropFilter="contrast(70%)"
+                      autoComplete="off"
+                    />
+                  </FormControl>
+                  <FormControl isInvalid={!!errors.body}>
+                    <Textarea
+                      {...register("body")}
+                      w="100%"
+                      placeholder="Body*"
+                      resize="none"
+                      backdropFilter="contrast(70%)"
+                    />
+                  </FormControl>
+                  <Text fontSize="12px">
+                    This site is protected by reCAPTCHA and the Google{" "}
+                    <Link
+                      href="https://policies.google.com/privacy"
+                      textDecoration="underline"
+                      target="_blank"
+                    >
+                      Privacy Policy
+                    </Link>{" "}
+                    and{" "}
+                    <Link
+                      href="https://policies.google.com/terms"
+                      textDecoration="underline"
+                      target="_blank"
+                    >
+                      Terms of Service
+                    </Link>{" "}
+                    apply.
+                  </Text>
+                  <Button type="submit" isDisabled={isSubmitting}>
+                    {isSubmitting ? "Sending..." : "Send"}
+                  </Button>
+                </Flex>
+              </form>
+            </FormProvider>
+          </AnimatedContent>
+        </Flex>
+      </PageSection>
     </PageContainer>
   );
 };

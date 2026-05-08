@@ -8,7 +8,7 @@ export const PageSection = ({
   ...props
 }: PropsWithChildren<FlexProps & { backgroundImgSrc?: string }>) => {
   return (
-    <Flex as="section" {...props}>
+    <Flex as="section" position="relative" {...props}>
       {backgroundImgSrc && (
         <>
           <Box

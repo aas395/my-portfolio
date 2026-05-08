@@ -6,6 +6,7 @@ import { AnimatedHeading } from "../components/AnimatedHeading";
 import { AnimatedContent } from "../components/AnimatedContent";
 import { useRef } from "react";
 import { Link } from "@chakra-ui/next-js";
+import { PageSection } from "../components/PageSection";
 
 const services = [
   {
@@ -44,38 +45,38 @@ export const Services = () => {
   const contentRef = useRef(null);
 
   return (
-    <PageContainer
-      id="services"
-      backgroundImgSrc="/ferenc-horvath-cg78NV0c_Ow-unsplash.webp"
-    >
-      <Flex
-        flexDir="column"
-        alignItems="center"
-        alignSelf="center"
-        ref={contentRef}
-      >
-        <AnimatedHeading>Services</AnimatedHeading>
-        <AnimatedContent>
-          <SimpleGrid
-            columns={{ base: 1, md: 2 }}
-            gap={{ base: 8, md: 16 }}
-            textAlign={{ base: "center", md: "left" }}
-          >
-            {services.map((service) => {
-              return <ServiceItem key={service.key} service={service} />;
-            })}
-          </SimpleGrid>
-          <Button
-            as={Link}
-            href="/contact"
-            mt={12}
-            w={{ base: "100%", md: "200px" }}
-            alignSelf="center"
-          >
-            Reach Out
-          </Button>
-        </AnimatedContent>
-      </Flex>
+    <PageContainer id="services">
+      <PageSection backgroundImgSrc="/ferenc-horvath-cg78NV0c_Ow-unsplash.webp">
+        <Flex
+          flexDir="column"
+          alignItems="center"
+          alignSelf="center"
+          ref={contentRef}
+          mt={40}
+        >
+          <AnimatedHeading>Services</AnimatedHeading>
+          <AnimatedContent>
+            <SimpleGrid
+              columns={{ base: 1, md: 2 }}
+              gap={{ base: 8, md: 16 }}
+              textAlign={{ base: "center", md: "left" }}
+            >
+              {services.map((service) => {
+                return <ServiceItem key={service.key} service={service} />;
+              })}
+            </SimpleGrid>
+            <Button
+              as={Link}
+              href="/contact"
+              mt={12}
+              w={{ base: "100%", md: "200px" }}
+              alignSelf="center"
+            >
+              Reach Out
+            </Button>
+          </AnimatedContent>
+        </Flex>
+      </PageSection>
     </PageContainer>
   );
 };
