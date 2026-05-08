@@ -1,11 +1,14 @@
 "use client";
 
-import { Button, Flex, SimpleGrid, Text } from "@chakra-ui/react";
+import { chakra, Flex, SimpleGrid, Text } from "@chakra-ui/react";
+
+const PlainButton = chakra("button");
 import { PageContainer } from "../components/PageContainer";
 import { AnimatedHeading } from "../components/AnimatedHeading";
 import { AnimatedContent } from "../components/AnimatedContent";
 import { useRef } from "react";
-import { Link } from "@chakra-ui/next-js";
+import NextLink from "next/link";
+import { PageSection } from "../components/PageSection";
 
 const services = [
   {
@@ -38,44 +41,62 @@ const services = [
     description:
       "I help startups get to revenue faster by helping them identify the problems their target market has and how to address them. Hire me to get to product/market fit and build a product your customers will pay you for and love.",
   },
+  {
+    key: "ai_consulting",
+    title: "AI Consulting",
+    description:
+      "I help development teams and businesses integrate AI tools into their workflows to dramatically increase productivity. From AI-assisted coding and automated code review to building custom solutions powered by large language models, I identify where AI has the highest impact and help your team adopt it effectively.",
+  },
 ];
 
 export const Services = () => {
   const contentRef = useRef(null);
 
   return (
-    <PageContainer
-      id="services"
-      backgroundImgSrc="/ferenc-horvath-cg78NV0c_Ow-unsplash.webp"
-    >
-      <Flex
-        flexDir="column"
-        alignItems="center"
-        alignSelf="center"
-        ref={contentRef}
-      >
-        <AnimatedHeading>Services</AnimatedHeading>
-        <AnimatedContent>
-          <SimpleGrid
-            columns={{ base: 1, md: 2 }}
-            gap={{ base: 8, md: 16 }}
-            textAlign={{ base: "center", md: "left" }}
-          >
-            {services.map((service) => {
-              return <ServiceItem key={service.key} service={service} />;
-            })}
-          </SimpleGrid>
-          <Button
-            as={Link}
-            href="/contact"
-            mt={12}
-            w={{ base: "100%", md: "200px" }}
-            alignSelf="center"
-          >
-            Reach Out
-          </Button>
-        </AnimatedContent>
-      </Flex>
+    <PageContainer id="services">
+      <PageSection backgroundImgSrc="/ferenc-horvath-cg78NV0c_Ow-unsplash.webp">
+        <Flex
+          flexDir="column"
+          alignItems="center"
+          alignSelf="center"
+          ref={contentRef}
+          mt={40}
+        >
+          <AnimatedHeading>Services</AnimatedHeading>
+          <AnimatedContent pb={16}>
+            <SimpleGrid
+              columns={{ base: 1, md: 2 }}
+              gap={{ base: 8, md: 16 }}
+              textAlign={{ base: "center", md: "left" }}
+            >
+              {services.map((service) => {
+                return <ServiceItem key={service.key} service={service} />;
+              })}
+            </SimpleGrid>
+            <Flex justifyContent="center" mt={12}>
+              <NextLink href="/contact">
+                <PlainButton
+                  w={{ base: "100%", md: "200px" }}
+                  bg="gray.100"
+                  color="gray.800"
+                  fontFamily="inherit"
+                  fontWeight="semibold"
+                  fontSize="md"
+                  lineHeight={1.33}
+                  h="10"
+                  px={4}
+                  borderRadius="md"
+                  boxShadow="0 0 3px 0 #000"
+                  cursor="pointer"
+                  _hover={{ bg: "#ccc" }}
+                >
+                  Reach Out
+                </PlainButton>
+              </NextLink>
+            </Flex>
+          </AnimatedContent>
+        </Flex>
+      </PageSection>
     </PageContainer>
   );
 };
@@ -88,10 +109,16 @@ const ServiceItem = ({ service }: { service: (typeof services)[0] }) => {
       zIndex="1"
       justifyContent={{ base: "space-between", md: "initial" }}
     >
-      <Text as="h3" mb={{ base: 1.5, md: 4 }} variant="itemTitle">
+      <Text
+        as="h3"
+        mb={{ base: 1.5, md: 4 }}
+        fontSize={{ base: "2xl", lg: "3xl" }}
+        lineHeight={{ base: 1.125, md: "normal" }}
+        fontWeight="bold"
+      >
         {service.title}
       </Text>
-      <Text>{service.description}</Text>
+      <Text fontSize={{ base: "lg", md: "xl" }} lineHeight={1.33}>{service.description}</Text>
     </Flex>
   );
 };

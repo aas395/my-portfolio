@@ -1,14 +1,15 @@
 "use client";
 
 import {
-  Button,
+  chakra,
+  createToaster,
+  Field,
   Flex,
-  FormControl,
   Input,
   Text,
   Textarea,
   Link,
-  useToast,
+  Toaster,
 } from "@chakra-ui/react";
 import { PageContainer } from "../components/PageContainer";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
@@ -19,6 +20,12 @@ import { useReCaptcha } from "next-recaptcha-v3";
 import { AnimatedHeading } from "../components/AnimatedHeading";
 import { AnimatedContent } from "../components/AnimatedContent";
 import { useEffect } from "react";
+import { PageSection } from "../components/PageSection";
+
+const PlainButton = chakra("button");
+const toaster = createToaster({ placement: "bottom-end" });
+const StyledToaster = Toaster as any;
+const ErrorText = Field.ErrorText as any;
 
 const schema = yup.object({
   name: yup.string().required("Required"),
@@ -40,7 +47,6 @@ export const Contact = () => {
     formState: { errors, isSubmitting, isSubmitSuccessful },
   } = formSettings;
   const { executeRecaptcha } = useReCaptcha();
-  const toast = useToast();
 
   useEffect(() => {
     reset();
@@ -50,99 +56,141 @@ export const Contact = () => {
     const token = await executeRecaptcha("form_submit");
     return axios.post("/api/contact", { ...data, token }).then((res) => {
       if (res.status === 200) {
-        toast({
+        toaster.create({
           title: "Message Sent!",
           description: "I will get back to you shortly.",
-          status: "success",
+          type: "success",
           duration: 9000,
-          isClosable: true,
-          position: "bottom-right",
         });
       } else {
-        toast({
+        toaster.create({
           title: "Something went wrong.",
           description: "Please try again later.",
-          status: "error",
+          type: "error",
           duration: 9000,
-          isClosable: true,
-          position: "bottom-right",
         });
       }
     });
   };
 
   return (
-    <PageContainer
-      id="contact"
-      backgroundImgSrc="/geio-tischler-tQT5KiZSKpE-unsplash.webp"
-    >
-      <Flex flexDir="column" alignItems="center" alignSelf="center" w="100%">
-        <AnimatedHeading>Contact</AnimatedHeading>
-        <AnimatedContent>
-          <FormProvider {...formSettings}>
-            <form onSubmit={handleSubmit(onSubmit)} className="w-full">
-              <Flex flexDir="column" width="100%" gap={4}>
-                <FormControl isInvalid={!!errors.name}>
-                  <Input
-                    {...register("name")}
+    <PageContainer id="contact">
+      <PageSection backgroundImgSrc="/geio-tischler-tQT5KiZSKpE-unsplash.webp">
+        <Flex
+          flexDir="column"
+          alignItems="center"
+          alignSelf="center"
+          w="100%"
+          h="100vh"
+          mt={40}
+        >
+          <AnimatedHeading>Contact</AnimatedHeading>
+          <AnimatedContent>
+            <FormProvider {...formSettings}>
+              <form onSubmit={handleSubmit(onSubmit)} className="w-full">
+                <Flex flexDir="column" width="100%" gap={4}>
+                  <Field.Root invalid={!!errors.name}>
+                    <Input
+                      {...register("name")}
+                      w="100%"
+                      placeholder="Name*"
+                      backdropFilter="contrast(70%)"
+                      color="#fff"
+                      _placeholder={{ color: "#fff" }}
+                    />
+                    {errors.name?.message && (
+                      <ErrorText>{errors.name.message}</ErrorText>
+                    )}
+                  </Field.Root>
+                  <Field.Root invalid={!!errors.email}>
+                    <Input
+                      {...register("email")}
+                      w="100%"
+                      placeholder="Email*"
+                      backdropFilter="contrast(70%)"
+                      color="#fff"
+                      _placeholder={{ color: "#fff" }}
+                    />
+                    {errors.email?.message && (
+                      <ErrorText>{errors.email.message}</ErrorText>
+                    )}
+                  </Field.Root>
+                  <Field.Root invalid={!!errors.subject}>
+                    <Input
+                      {...register("subject")}
+                      w="100%"
+                      placeholder="Subject*"
+                      backdropFilter="contrast(70%)"
+                      autoComplete="off"
+                      color="#fff"
+                      _placeholder={{ color: "#fff" }}
+                    />
+                    {errors.subject?.message && (
+                      <ErrorText>{errors.subject.message}</ErrorText>
+                    )}
+                  </Field.Root>
+                  <Field.Root invalid={!!errors.body}>
+                    <Textarea
+                      {...register("body")}
+                      w="100%"
+                      placeholder="Body*"
+                      resize="none"
+                      backdropFilter="contrast(70%)"
+                      color="#fff"
+                      _placeholder={{ color: "#fff" }}
+                    />
+                    {errors.body?.message && (
+                      <ErrorText>{errors.body.message}</ErrorText>
+                    )}
+                  </Field.Root>
+                  <Text fontSize="12px">
+                    This site is protected by reCAPTCHA and the Google{" "}
+                    <Link
+                      href="https://policies.google.com/privacy"
+                      textDecoration="underline"
+                      color="inherit"
+                      target="_blank"
+                    >
+                      Privacy Policy
+                    </Link>{" "}
+                    and{" "}
+                    <Link
+                      href="https://policies.google.com/terms"
+                      textDecoration="underline"
+                      color="inherit"
+                      target="_blank"
+                    >
+                      Terms of Service
+                    </Link>{" "}
+                    apply.
+                  </Text>
+                  <PlainButton
+                    type="submit"
+                    disabled={isSubmitting}
                     w="100%"
-                    placeholder="Name*"
-                    backdropFilter="contrast(70%)"
-                  />
-                </FormControl>
-                <FormControl isInvalid={!!errors.email}>
-                  <Input
-                    {...register("email")}
-                    w="100%"
-                    placeholder="Email*"
-                    backdropFilter="contrast(70%)"
-                  />
-                </FormControl>
-                <FormControl isInvalid={!!errors.subject}>
-                  <Input
-                    {...register("subject")}
-                    w="100%"
-                    placeholder="Subject*"
-                    backdropFilter="contrast(70%)"
-                    autoComplete="off"
-                  />
-                </FormControl>
-                <FormControl isInvalid={!!errors.body}>
-                  <Textarea
-                    {...register("body")}
-                    w="100%"
-                    placeholder="Body*"
-                    resize="none"
-                    backdropFilter="contrast(70%)"
-                  />
-                </FormControl>
-                <Text fontSize="12px">
-                  This site is protected by reCAPTCHA and the Google{" "}
-                  <Link
-                    href="https://policies.google.com/privacy"
-                    textDecoration="underline"
-                    target="_blank"
+                    bg="gray.100"
+                    color="gray.800"
+                    fontFamily="inherit"
+                    fontWeight="semibold"
+                    fontSize="md"
+                    lineHeight={1.33}
+                    h="10"
+                    px={4}
+                    borderRadius="md"
+                    boxShadow="0 0 3px 0 #000"
+                    cursor="pointer"
+                    _hover={{ bg: "#ccc" }}
+                    _disabled={{ opacity: 0.6, cursor: "not-allowed" }}
                   >
-                    Privacy Policy
-                  </Link>{" "}
-                  and{" "}
-                  <Link
-                    href="https://policies.google.com/terms"
-                    textDecoration="underline"
-                    target="_blank"
-                  >
-                    Terms of Service
-                  </Link>{" "}
-                  apply.
-                </Text>
-                <Button type="submit" isDisabled={isSubmitting}>
-                  {isSubmitting ? "Sending..." : "Send"}
-                </Button>
-              </Flex>
-            </form>
-          </FormProvider>
-        </AnimatedContent>
-      </Flex>
+                    {isSubmitting ? "Sending..." : "Send"}
+                  </PlainButton>
+                </Flex>
+                <StyledToaster toaster={toaster} />
+              </form>
+            </FormProvider>
+          </AnimatedContent>
+        </Flex>
+      </PageSection>
     </PageContainer>
   );
 };

@@ -1,22 +1,24 @@
-import { HamburgerIcon } from "@chakra-ui/icons";
+"use client";
+
+import { Menu as MenuIcon } from "lucide-react";
 import {
-  Box,
-  Flex,
+  chakra,
+  Icon,
   IconButton,
-  Menu,
-  MenuButton,
   useBreakpointValue,
   useDisclosure,
-  useOutsideClick,
-  Fade,
 } from "@chakra-ui/react";
-import { Link as ChakraLink } from "@chakra-ui/next-js";
+import NextLink from "next/link";
 import { motion } from "framer-motion";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { type Link } from "./Header";
 
+const ChakraDiv = chakra("div");
+const MotionDiv = motion(ChakraDiv) as any;
+const ChakraLink = chakra(NextLink);
+
 export const MobileNav = ({ links }: { links: Link[] }) => {
-  const { isOpen, onClose, onToggle } = useDisclosure();
+  const { open: isOpen, onClose, onToggle } = useDisclosure();
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const variants = {
@@ -25,20 +27,23 @@ export const MobileNav = ({ links }: { links: Link[] }) => {
   };
   const showMenu = useBreakpointValue({ base: isOpen, md: true });
 
-  useOutsideClick({
-    ref: menuRef,
-    handler: (e: Event) => {
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
       if (
         e.target &&
-        !(e.target as HTMLDivElement).id.includes("menu-button")
+        !(e.target as HTMLElement).id.includes("menu-button") &&
+        menuRef.current &&
+        !menuRef.current.contains(e.target as Node)
       ) {
         onClose();
       }
-    },
-  });
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, [onClose]);
 
   return (
-    <Box
+    <ChakraDiv
       className="flex md:hidden"
       flexDir="column"
       alignItems="center"
@@ -46,93 +51,89 @@ export const MobileNav = ({ links }: { links: Link[] }) => {
       bottom="2dvh"
       right="3vw"
     >
-      <Menu>
-        <Fade in={true} transition={{ enter: { duration: 0.25, delay: 2 } }}>
-          <MenuButton
-            as={IconButton}
-            aria-label="Options"
-            icon={<HamburgerIcon pointerEvents="none" boxSize="22px" />}
-            variant="outline"
-            className="md:hidden"
-            id="menu-button"
-            onClick={(e) => {
-              onToggle();
-
-              if (e.currentTarget.id.includes("menu-button")) {
-                e.currentTarget.blur();
-              }
-            }}
-            bgColor={isOpen ? "#fff" : "transparent"}
-            color={isOpen ? "#000" : "#fff"}
-            backdropFilter="blur(8px)"
-            flexGrow={0}
-            _hover={
-              isOpen
-                ? {
-                    bgColor: "#fff",
-                    color: "#000",
-                  }
-                : { bgColor: "transparent", color: "#fff" }
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.25, delay: 2 }}
+      >
+        <IconButton
+          aria-label="Options"
+          variant="outline"
+          className="md:hidden"
+          id="menu-button"
+          onClick={(e) => {
+            onToggle();
+            if (e.currentTarget.id.includes("menu-button")) {
+              e.currentTarget.blur();
             }
-            ref={buttonRef}
-            borderWidth="2px"
-            borderRadius="50%"
-            w="44px"
-            h="44px"
-            boxShadow="0 0 3px 0 #000"
-          />
-        </Fade>
-        {showMenu && (
-          <Flex
-            gap={{ base: 2, md: 8 }}
-            as={motion.div}
-            flexDir={{ base: "column", md: "row" }}
-            bottom="52px"
-            animate={showMenu ? "visible" : "hidden"}
-            variants={variants}
-            ref={menuRef}
-            boxShadow={{ base: "0 0 3px 0 #000", md: "none" }}
-            borderRadius={{ base: "lg", md: "none" }}
-            p={{ base: 4, md: 0 }}
-            bgColor={{ base: "rgba(200,200,200,.4)", md: "none" }}
-            backdropFilter={{ base: "contrast(20%) blur(9px)", md: "none" }}
-            flexShrink={0}
-            position="absolute"
-            right="0"
-            px={8}
-          >
-            {links.map((item) => {
-              return (
-                <ChakraLink
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => {
-                    onClose();
-                  }}
-                  position="relative"
-                  display="block"
-                  justifyContent="center"
-                  alignItems="center"
-                  _hover={{
-                    textDecoration: "none",
-                  }}
+          }}
+          bgColor={isOpen ? "#fff" : "transparent"}
+          color={isOpen ? "#000" : "#fff"}
+          backdropFilter="blur(8px)"
+          flexGrow={0}
+          _hover={
+            isOpen
+              ? { bgColor: "#fff", color: "#000" }
+              : { bgColor: "transparent", color: "#fff" }
+          }
+          ref={buttonRef}
+          borderWidth="2px"
+          borderRadius="50%"
+          w="44px"
+          h="44px"
+          boxShadow="0 0 3px 0 #000"
+        >
+          <Icon as={MenuIcon} pointerEvents="none" boxSize="22px" />
+        </IconButton>
+      </motion.div>
+      {showMenu && (
+        <MotionDiv
+          display="flex"
+          gap={{ base: 2, md: 8 }}
+          flexDir={{ base: "column", md: "row" }}
+          bottom="52px"
+          animate={showMenu ? "visible" : "hidden"}
+          variants={variants}
+          ref={menuRef}
+          boxShadow={{ base: "0 0 3px 0 #000", md: "none" }}
+          borderRadius={{ base: "lg", md: "none" }}
+          p={{ base: 4, md: 0 }}
+          bgColor={{ base: "rgba(200,200,200,.4)", md: "none" }}
+          backdropFilter={{ base: "contrast(20%) blur(9px)", md: "none" }}
+          flexShrink={0}
+          position="absolute"
+          right="0"
+          px={8}
+        >
+          {links.map((item) => {
+            return (
+              <ChakraLink
+                key={item.href}
+                href={item.href}
+                onClick={() => {
+                  onClose();
+                }}
+                position="relative"
+                display="block"
+                justifyContent="center"
+                alignItems="center"
+                _hover={{
+                  textDecoration: "none",
+                }}
+              >
+                <ChakraDiv
+                  height="100%"
+                  width="100%"
+                  color="#fff"
+                  fontSize="20px"
                 >
-                  <Box
-                    as={motion.div}
-                    height="100%"
-                    width="100%"
-                    whileHover="active"
-                    color="#fff"
-                    fontSize="20px"
-                  >
-                    {item.text}
-                  </Box>
-                </ChakraLink>
-              );
-            })}
-          </Flex>
-        )}
-      </Menu>
-    </Box>
+                  {item.text}
+                </ChakraDiv>
+              </ChakraLink>
+            );
+          })}
+        </MotionDiv>
+      )}
+    </ChakraDiv>
   );
 };

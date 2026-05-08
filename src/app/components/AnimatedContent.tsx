@@ -1,7 +1,12 @@
+"use client";
+
 import { contentVariants } from "@/theme";
-import { Flex, FlexProps } from "@chakra-ui/react";
+import { chakra, FlexProps } from "@chakra-ui/react";
 import { motion, useInView } from "framer-motion";
 import { PropsWithChildren, useRef } from "react";
+
+const ChakraDiv = chakra("div");
+const MotionDiv = motion(ChakraDiv) as any;
 
 export const AnimatedContent = ({
   children,
@@ -11,18 +16,18 @@ export const AnimatedContent = ({
   const isInView = useInView(contentRef, { once: true });
 
   return (
-    <Flex
-      as={motion.div}
+    <MotionDiv
       variants={contentVariants}
       ref={contentRef}
       animate={isInView ? "visible" : "initial"}
       initial="initial"
       position="relative"
+      display="flex"
       flexDir="column"
       color="#fff"
       {...props}
     >
       {children}
-    </Flex>
+    </MotionDiv>
   );
 };

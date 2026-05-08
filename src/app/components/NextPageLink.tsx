@@ -1,7 +1,11 @@
-import { ChevronDownIcon } from "@chakra-ui/icons";
-import { Flex, Icon, useBreakpointValue } from "@chakra-ui/react";
+import { ChevronDown } from "lucide-react";
+import { chakra, Icon, useBreakpointValue } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import Link from "next/link";
+import NextLink from "next/link";
+
+const ChakraDiv = chakra("div");
+const MotionDiv = motion(ChakraDiv) as any;
+const ChakraLink = chakra(NextLink);
 
 export const NextPageLink = ({ url, show }: { url: string; show: boolean }) => {
   const bottomAmount = useBreakpointValue({ base: "15dvh", md: "40px" });
@@ -20,19 +24,19 @@ export const NextPageLink = ({ url, show }: { url: string; show: boolean }) => {
   };
 
   return (
-    <Flex
+    <MotionDiv
       w="100%"
       position="absolute"
       left="0"
       right="0"
+      display="flex"
       justifyContent="center"
-      as={motion.div}
       animate={show ? "visible" : "initial"}
       variants={contentVariants}
       initial="initial"
       zIndex={100}
     >
-      <Flex as={Link} href={url} flexDir="column" alignItems="center">
+      <ChakraLink href={url} flexDir="column" alignItems="center" display="flex">
         <motion.div
           animate={{
             transform: [
@@ -43,9 +47,9 @@ export const NextPageLink = ({ url, show }: { url: string; show: boolean }) => {
           }}
           transition={{ repeat: Infinity, repeatDelay: 1 }}
         >
-          <Icon as={ChevronDownIcon} boxSize={12} color="#fff" />
+          <Icon as={ChevronDown} boxSize={12} color="#fff" />
         </motion.div>
-      </Flex>
-    </Flex>
+      </ChakraLink>
+    </MotionDiv>
   );
 };
